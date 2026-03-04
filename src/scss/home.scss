@@ -7,6 +7,7 @@
 .hero {
   @include mixins.adaptiveValue("padding-top", 30, 20, 1280, 480);
   @include mixins.adaptiveValue("padding-bottom", 50, 30, 768, 480);
+
   .splide {
     &__pagination {
       pointer-events: none;
@@ -14,7 +15,7 @@
       justify-content: center;
       align-items: center;
 
-      @media (width < #{mixins.toEm(600)}){
+      @media (width < #{mixins.toEm(600)}) {
         left: 50%;
       }
 
@@ -22,7 +23,8 @@
 
       li {
         display: flex;
-        justify-content:center;align-items: center;
+        justify-content: center;
+        align-items: center;
       }
 
       &__page {
@@ -48,7 +50,8 @@
 
   &__container {
     display: grid;
-    @media (width >= #{mixins.toEm(variables.$tablet)}){
+
+    @media (width >=#{mixins.toEm(variables.$tablet)}) {
       grid-template-columns: 1fr 0.38fr;
       gap: mixins.toRem(15);
     }
@@ -62,28 +65,28 @@
     min-width: 0;
   }
 }
+
 .big-hero {
 
   &__slider {
     position: relative;
+
     .splide {
       &__pagination {
         position: absolute;
         left: 0;
         right: 0;
 
-        @media (width < #{mixins.toEm(600)}){
+        @media (width < #{mixins.toEm(600)}) {
           left: 50%;
         }
       }
     }
   }
 
-  &__track {
-  }
+  &__track {}
 
-  &__list {
-  }
+  &__list {}
 
   &__slide {
     display: flex;
@@ -91,11 +94,11 @@
     overflow: hidden;
     aspect-ratio: 910 / 430;
 
-    @media (width < #{mixins.toEm(variables.$tablet)}){
+    @media (width < #{mixins.toEm(variables.$tablet)}) {
       aspect-ratio: 688 / 335;
     }
 
-    @media (width < #{mixins.toEm(600)}){
+    @media (width < #{mixins.toEm(600)}) {
       aspect-ratio: 440 / 290;
     }
   }
@@ -114,11 +117,11 @@
     @include mixins.adaptiveValue("padding-left", 40, 20, 1920, 480);
     @include mixins.adaptiveValue("padding-right", 40, 20, 1920, 480);
 
-    @media (width >= #{mixins.toEm(variables.$tablet)}){
+    @media (width >=#{mixins.toEm(variables.$tablet)}) {
       justify-content: space-between;
     }
 
-    @media (width < #{mixins.toEm(600)}){
+    @media (width < #{mixins.toEm(600)}) {
       width: 50%;
     }
   }
@@ -130,7 +133,8 @@
     text-transform: uppercase;
     @include mixins.adaptiveValue("--font-size", 30, 16);
 
-    b, strong {
+    b,
+    strong {
       font-weight: 700;
       font-size: calc(var(--font-size) * 1.16);
     }
@@ -139,7 +143,8 @@
   &__button {
     width: 100%;
     display: flex;
-    justify-content:center;align-items: center;
+    justify-content: center;
+    align-items: center;
     background-color: var(--white-color);
     color: var(--black-color);
     font-weight: 600;
@@ -153,8 +158,8 @@
       transition: all 0.3s ease 0s;
     }
 
-    @media (any-hover: hover){
-      &:hover{
+    @media (any-hover: hover) {
+      &:hover {
         background-color: var(--circle-bg);
         color: var(--white-color);
       }
@@ -166,7 +171,8 @@
     right: 0;
 
     display: flex;
-    justify-content:center;align-items: center;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     background: var(--circle-bg);
     box-shadow: 0px mixins.toRem(7.8) mixins.toRem(15.59) 0px #00000040;
@@ -184,6 +190,7 @@
     position: absolute;
     inset: 0;
     z-index: -1;
+
     img {
       width: 100%;
       height: 100%;
@@ -192,13 +199,15 @@
     }
   }
 }
+
 .small-hero {
-  @media (width < #{mixins.toEm(variables.$tablet)}){
+  @media (width < #{mixins.toEm(variables.$tablet)}) {
     display: none;
   }
 
   &__slider {
     height: 100%;
+
     .splide {
       &__pagination {
         position: absolute;
@@ -216,8 +225,7 @@
     height: 100%;
   }
 
-  &__list {
-  }
+  &__list {}
 
   &__slide {
     border-radius: mixins.toRem(20);
@@ -246,14 +254,17 @@
 
     @include mixins.adaptiveValue("font-size", 30, 24, 1920, 1280);
 
-    &:not(:last-child) {margin-bottom: mixins.toRem(25);}
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(25);
+    }
   }
 
   &__button {
     min-width: mixins.toRem(195);
     position: relative;
     display: inline-flex;
-    justify-content:center;align-items: center;
+    justify-content: center;
+    align-items: center;
     height: mixins.toRem(50);
     border-radius: mixins.toRem(15);
     color: var(--white-color);
@@ -267,11 +278,9 @@
   @include mixins.adaptiveValue("padding-top", 50, 30, 768, 480);
   @include mixins.adaptiveValue("padding-bottom", 100, 60, 767, 360);
 
-  &__container {
-  }
+  &__container {}
 
-  &__slider {
-  }
+  &__slider {}
 
   &__head {
     display: flex;
@@ -287,10 +296,12 @@
     font-weight: 500;
     line-height: 1.2;
     font-size: mixins.toRem(35);
-    @media (width < #{mixins.toEm(variables.$pc)}){
+
+    @media (width < #{mixins.toEm(variables.$pc)}) {
       font-size: mixins.toRem(30);
     }
-    @media (width < #{mixins.toEm(variables.$mobileSmall)}){
+
+    @media (width < #{mixins.toEm(variables.$mobileSmall)}) {
       font-size: mixins.toRem(24);
     }
   }
@@ -298,7 +309,8 @@
   &__arrows {
     display: flex;
     gap: mixins.toRem(20);
-    @media (width < #{mixins.toEm(variables.$mobile)}){
+
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
       display: none;
     }
   }
@@ -309,18 +321,20 @@
     height: mixins.toRem(40);
     border-radius: 50%;
     display: flex;
-    justify-content:center;align-items: center;
+    justify-content: center;
+    align-items: center;
     border: mixins.toRem(1) solid var(--stroke-color);
     background-color: var(--white-color);
 
-    &, path {
+    &,
+    path {
       .loaded & {
         transition: all 0.3s ease 0s;
       }
     }
 
-    @media (any-hover: hover){
-      &:hover{
+    @media (any-hover: hover) {
+      &:hover {
         border-color: var(--black-color);
       }
     }
@@ -331,11 +345,10 @@
     }
   }
 
-  &__track {
-  }
+  &__track {}
 
   &__list {
-    @media (width < #{mixins.toEm(variables.$mobile)}){
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
       .splide.is-initialized:not(.is-active) & {
         display: flex;
         gap: mixins.toRem(10);
@@ -364,7 +377,8 @@
 
     i {
       display: flex;
-      justify-content:center;align-items: center;
+      justify-content: center;
+      align-items: center;
       flex: 0 0 mixins.toRem(40);
       width: mixins.toRem(40);
       height: mixins.toRem(40);
@@ -374,17 +388,20 @@
         max-height: 100%;
       }
 
-      &:not(:last-child) {margin-bottom: mixins.toRem(6);}
+      &:not(:last-child) {
+        margin-bottom: mixins.toRem(6);
+      }
     }
 
     span {
       display: flex;
-      justify-content:center;align-items: center;
+      justify-content: center;
+      align-items: center;
 
       flex: 1 0 var(--min-height);
     }
 
-    @media (width < #{mixins.toEm(variables.$mobile)}){
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
       scroll-snap-align: start;
     }
   }
@@ -399,11 +416,9 @@
   @include mixins.adaptiveValue("padding-bottom", 90, 30, 1280, 480);
   @include mixins.adaptiveValue("margin-bottom", 60, 30);
 
-  &__container {
-  }
+  &__container {}
 
-  &__slider {
-  }
+  &__slider {}
 
   &__head {
     display: flex;
@@ -419,19 +434,20 @@
     font-weight: 500;
     line-height: 1.2;
     font-size: mixins.toRem(35);
-    @media (width < #{mixins.toEm(variables.$pc)}){
+
+    @media (width < #{mixins.toEm(variables.$pc)}) {
       font-size: mixins.toRem(30);
     }
-    @media (width < #{mixins.toEm(variables.$mobileSmall)}){
+
+    @media (width < #{mixins.toEm(variables.$mobileSmall)}) {
       font-size: mixins.toRem(24);
     }
   }
 
-  &__track {
-  }
+  &__track {}
 
   &__list {
-    @media (width < #{mixins.toEm(variables.$mobile)}){
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
       .splide.is-initialized:not(.is-active) & {
         display: flex;
         gap: mixins.toRem(10);
@@ -454,20 +470,20 @@
     font-size: mixins.toRem(14);
     line-height: 1.4;
 
-    @media (width < #{mixins.toEm(variables.$tablet)}){
+    @media (width < #{mixins.toEm(variables.$tablet)}) {
       width: mixins.toRem(100);
     }
 
-    @media (width < #{mixins.toEm(variables.$mobileSmall)}){
+    @media (width < #{mixins.toEm(variables.$mobileSmall)}) {
       width: mixins.toRem(77);
     }
 
-    @media (width < #{mixins.toEm(variables.$mobile)}){
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
       scroll-snap-align: start;
     }
 
-    @media (any-hover: hover){
-      &:hover{
+    @media (any-hover: hover) {
+      &:hover {
         i {
           padding: 0;
         }
@@ -481,7 +497,9 @@
       border-radius: 50%;
       border: mixins.toRem(1) solid var(--stroke-color);
       display: flex;
-      justify-content:center;align-items: center;
+      justify-content: center;
+      align-items: center;
+
       .loaded & {
         transition: all 0.3s ease 0s;
       }
@@ -503,11 +521,11 @@
   @include mixins.adaptiveValue("padding-top", 60, 30);
   @include mixins.adaptiveValue("padding-bottom", 60, 30);
 
-  &__container {
-  }
+  &__container {}
 
   &__title {
-    font-weight: 600;font-size: var(--font-size);
+    font-weight: 600;
+    font-size: var(--font-size);
     letter-spacing: mixins.lsp(-3);
     max-width: mixins.toRem(955);
     line-height: 1.4;
@@ -527,11 +545,11 @@
   &__body {
     display: grid;
     gap: mixins.toRem(20);
-    
-    @media (width >= #{mixins.toEm(variables.$tablet)}){
+
+    @media (width >=#{mixins.toEm(variables.$tablet)}) {
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(28, 1fr);
-      grid-template-areas: 
+      grid-template-areas:
         "assortiment assortiment catalog catalog"
         "assortiment assortiment catalog catalog"
         "assortiment assortiment catalog catalog"
@@ -559,10 +577,10 @@
         "item1 item2 item3 item5"
         "item1 item2 item3 item5"
         "item1 item2 item3 item5"
-        "item1 item2 item3 item5"; 
+        "item1 item2 item3 item5";
     }
 
-    @media (#{mixins.toEm(470)} < width < #{mixins.toEm(variables.$tablet)}){
+    @media (#{mixins.toEm(470)} < width < #{mixins.toEm(variables.$tablet)}) {
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -573,10 +591,11 @@
 
     @include mixins.adaptiveValue("padding", 30, 15, 767, 360);
 
-    @media (width >= #{mixins.toEm(variables.$tablet)}){
+    @media (width >=#{mixins.toEm(variables.$tablet)}) {
       grid-area: assortiment;
     }
-    @media (#{mixins.toEm(470)} < width < #{mixins.toEm(variables.$tablet)}){
+
+    @media (#{mixins.toEm(470)} < width < #{mixins.toEm(variables.$tablet)}) {
       grid-column: 1 / span 2;
     }
 
@@ -586,6 +605,7 @@
       font-size: var(--font-size);
       letter-spacing: mixins.lsp(-3);
       @include mixins.adaptiveValue("--font-size", 24, 18, 1920, 360);
+
       &:not(:last-child) {
         @include mixins.adaptiveValue("margin-bottom", 30, 20, 767, 480);
       }
@@ -594,9 +614,12 @@
     p {
       color: var(--grey-color);
       line-height: 1.4;
-      
+
       @include mixins.adaptiveValue("font-size", 16, 14, 1920, 1280);
-      &:not(:last-child) {margin-bottom: mixins.toRem(10);}
+
+      &:not(:last-child) {
+        margin-bottom: mixins.toRem(10);
+      }
     }
   }
 
@@ -604,6 +627,7 @@
     display: flex;
     max-width: calc(100vw - mixins.toRem(50));
     overflow: auto;
+
     &::-webkit-scrollbar {
       width: mixins.toRem(0);
       height: mixins.toRem(0);
@@ -653,10 +677,11 @@
     @include mixins.adaptiveValue("padding", 30, 15, 767, 360);
     @include mixins.adaptiveValue("gap", 30, 20, 767, 480);
 
-    @media (width >= #{mixins.toEm(variables.$tablet)}){
+    @media (width >=#{mixins.toEm(variables.$tablet)}) {
       grid-area: catalog;
     }
-    @media (#{mixins.toEm(470)} < width < #{mixins.toEm(variables.$tablet)}){
+
+    @media (#{mixins.toEm(470)} < width < #{mixins.toEm(variables.$tablet)}) {
       grid-column: 1 / span 2;
       min-height: mixins.toRem(320);
     }
@@ -683,9 +708,12 @@
       position: relative;
       color: var(--stroke-color);
       line-height: 1.4;
-      
+
       @include mixins.adaptiveValue("font-size", 16, 14, 1920, 1280);
-      &:not(:last-child) {margin-bottom: mixins.toRem(10);}
+
+      &:not(:last-child) {
+        margin-bottom: mixins.toRem(10);
+      }
     }
   }
 
@@ -696,15 +724,17 @@
     gap: mixins.toRem(10) mixins.toRem(20);
     border-radius: mixins.toRem(20);
     border: mixins.toRem(1) solid var(--border-color, transparent);
-    
-    @media (width >= #{mixins.toEm(470)}){
+
+    @media (width >=#{mixins.toEm(470)}) {
       justify-content: space-between;
       flex-direction: column;
     }
-    @media (width >= #{mixins.toEm(variables.$tablet)}){
+
+    @media (width >=#{mixins.toEm(variables.$tablet)}) {
       grid-area: var(--grid-area);
     }
-    @media (#{mixins.toEm(470)} < width < #{mixins.toEm(variables.$tablet)}){
+
+    @media (#{mixins.toEm(470)} < width < #{mixins.toEm(variables.$tablet)}) {
       grid-row: span var(--grid-mobile-rows);
     }
 
@@ -714,7 +744,8 @@
       height: mixins.toRem(40);
       background-color: var(--black-color);
       display: flex;
-      justify-content:center;align-items: center;
+      justify-content: center;
+      align-items: center;
       border-radius: mixins.toRem(10);
     }
 
@@ -722,7 +753,8 @@
       font-weight: 600;
       line-height: 1.2;
       @include mixins.adaptiveValue("font-size", 16, 14, 1920, 1280);
-      @media (width < #{mixins.toEm(470)}){
+
+      @media (width < #{mixins.toEm(470)}) {
         align-self: center;
       }
     }
@@ -735,8 +767,7 @@
   @include mixins.adaptiveValue("padding-top", 60, 30);
   @include mixins.adaptiveValue("padding-bottom", 60, 30);
 
-  &__container {
-  }
+  &__container {}
 
   &__wrapper {
     background-color: var(--plate-bg-color);
@@ -745,17 +776,18 @@
 
     @include mixins.adaptiveValue("padding", 42, 20, 1920, 480);
 
-    @media (width < #{mixins.toEm(variables.$mobile)}){
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
       overflow: hidden;
       padding-bottom: mixins.toRem(150);
     }
   }
 
   &__content {
-    @media (width >= #{mixins.toEm(variables.$tablet)}){
-      max-width: mixins.percent(698,1196);
+    @media (width >=#{mixins.toEm(variables.$tablet)}) {
+      max-width: mixins.percent(698, 1196);
     }
-    @media (width < #{mixins.toEm(variables.$mobile)}){
+
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
       position: relative;
       z-index: 2;
     }
@@ -766,7 +798,10 @@
     line-height: 1.2;
 
     @include mixins.adaptiveValue("font-size", 35, 22, 1920, 360);
-    &:not(:last-child) {margin-bottom: mixins.toRem(14);}
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(14);
+    }
   }
 
   &__green {
@@ -776,9 +811,10 @@
     padding: mixins.toRem(6) mixins.toRem(10);
     border-radius: mixins.toRem(6);
     font-weight: 500;
-    line-height: math.div(22 , 16);
+    line-height: math.div(22, 16);
 
     @include mixins.adaptiveValue("font-size", 16, 13, 1280, 480);
+
     &:not(:last-child) {
       @include mixins.adaptiveValue("margin-bottom", 40, 30, 1280, 767);
     }
@@ -788,15 +824,17 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: mixins.toRem(16);
+
     &:not(:last-child) {
       @include mixins.adaptiveValue("margin-bottom", 30, 24, 1280, 767);
     }
 
-    @media (#{mixins.toEm(variables.$mobile)} < width < #{mixins.toEm(variables.$tablet)}){
+    @media (#{mixins.toEm(variables.$mobile)} < width < #{mixins.toEm(variables.$tablet)}) {
       grid-template-columns: repeat(2, 1fr);
-      max-width: mixins.percent(337,632);
+      max-width: mixins.percent(337, 632);
     }
-    @media (width < #{mixins.toEm(variables.$mobileSmall)}){
+
+    @media (width < #{mixins.toEm(variables.$mobileSmall)}) {
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -818,14 +856,15 @@
       @include mixins.adaptiveValue("font-size", 14, 13, 767, 480);
     }
 
-    
-    @media (#{mixins.toEm(variables.$mobile)} < width < #{mixins.toEm(variables.$tablet)}){
-      &:last-child{
+
+    @media (#{mixins.toEm(variables.$mobile)} < width < #{mixins.toEm(variables.$tablet)}) {
+      &:last-child {
         grid-column: 1 / span 2;
       }
     }
-    @media (width < #{mixins.toEm(variables.$mobileSmall)}){
-      &:last-child{
+
+    @media (width < #{mixins.toEm(variables.$mobileSmall)}) {
+      &:last-child {
         grid-column: 1 / span 2;
       }
     }
@@ -836,36 +875,40 @@
     color: var(--white-color);
     height: mixins.toRem(50);
     display: inline-flex;
-    justify-content:center;align-items: center;
+    justify-content: center;
+    align-items: center;
     border-radius: mixins.toRem(15);
     font-weight: 600;
-    
-    @media (width >= #{mixins.toEm(variables.$tablet)}){
-      min-width: mixins.percent(467,698);
+
+    @media (width >=#{mixins.toEm(variables.$tablet)}) {
+      min-width: mixins.percent(467, 698);
     }
-    @media (width < #{mixins.toEm(variables.$tablet)}){
+
+    @media (width < #{mixins.toEm(variables.$tablet)}) {
       height: mixins.toRem(48);
       width: 100%;
     }
 
-    @media (#{mixins.toEm(variables.$mobile)} < width < #{mixins.toEm(variables.$tablet)}){
-      max-width: mixins.percent(337,632);
+    @media (#{mixins.toEm(variables.$mobile)} < width < #{mixins.toEm(variables.$tablet)}) {
+      max-width: mixins.percent(337, 632);
     }
   }
 
   &__image {
     position: absolute;
-    
-    @media (width >= #{mixins.toEm(variables.$pc)}){
+
+    @media (width >=#{mixins.toEm(variables.$pc)}) {
       right: mixins.toRem(20);
       bottom: mixins.toRem(20);
     }
-    @media (width < #{mixins.toEm(variables.$pc)}){
+
+    @media (width < #{mixins.toEm(variables.$pc)}) {
       right: 0;
       bottom: mixins.toRem(8);
-      max-width: mixins.percent(359,688);
+      max-width: mixins.percent(359, 688);
     }
-    @media (width < #{mixins.toEm(variables.$mobile)}){
+
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
       right: auto;
       left: 50%;
       bottom: 0;
@@ -880,13 +923,13 @@
   @include mixins.adaptiveValue("padding-top", 60, 30);
   @include mixins.adaptiveValue("padding-bottom", 60, 30);
 
-  &__container {
-  }
+  &__container {}
 
   &__head {
     max-width: mixins.toRem(730);
+
     &:not(:last-child) {
-      @include mixins.adaptiveValue("margin-bottom", 40, 24, 1280, 480);
+      @include mixins.adaptiveValue("margin-bottom", 40, 24, variables.$pc, variables.$mobileSmall);
     }
   }
 
@@ -894,50 +937,73 @@
     font-weight: 600;
     line-height: 1.2;
 
-    @include mixins.adaptiveValue("font-size", 35, 22, 1920, 360);
-    &:not(:last-child) {margin-bottom: mixins.toRem(14);}
+    @include mixins.adaptiveValue("font-size", 35, 22, variables.$maxWidth, variables.$minWidth);
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(14);
+    }
   }
 
   &__subtitle {
     color: var(--grey-color);
     line-height: 1.4;
-    @include mixins.adaptiveValue("font-size", 16, 14, 767, 360);
+    @include mixins.adaptiveValue("font-size", 16, 14, variables.$mobile, variables.$minWidth);
   }
 
   &__body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    scroll-snap-type: x mandatory;
-    @include mixins.adaptiveValue("gap", 18, 14, 767, 480);
-    &::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-    }
+    grid-auto-rows: 1fr;
+    @include mixins.adaptiveValue("gap", 18, 14, variables.$mobile, variables.$mobileSmall);
 
-    @media (width < #{mixins.toEm(variables.$tablet)}){
+    @media (width < #{mixins.toEm(variables.$tablet)}) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (width < #{mixins.toEm(variables.$pc)}){
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
       grid-template-columns: 1fr;
-      grid-auto-flow: column;
-      overflow-x: auto;
     }
   }
 
   &__item {
-    scroll-snap-align: start;
-    --bgc: var(--plate-bg-color);
-    --svg-color: var(--white-color);
-    --svg-bg: var(--accent-color);
+    --bgc: #1774C9;
+    --svg-color: #1774C9;
+    --svg-bg: #fff;
+    --text-color: #fff;
 
     display: flex;
     flex-direction: column;
     gap: mixins.toRem(16);
     background-color: var(--bgc);
 
-    @include mixins.adaptiveValue("padding", 30, 16, 1920, 480);
-    @include mixins.adaptiveValue("border-radius", 20, 15, 767, 480);
+    @include mixins.adaptiveValue("padding", 30, 16, variables.$maxWidth, variables.$mobileSmall);
+    @include mixins.adaptiveValue("border-radius", 20, 15, variables.$mobile, variables.$mobileSmall);
+
+    @media (width >=#{mixins.toEm(variables.$mobile)}) {
+      &:hover {
+        --bgc: #29B24A;
+        --svg-color: #29B24A;
+        --svg-bg: #fff;
+        --text-color: #fff;
+      }
+    }
+
+    @media (width <=#{mixins.toEm(variables.$mobile)}) {
+      --bgc: var(--plate-bg-color);
+      --svg-color: var(--white-color);
+      --svg-bg: var(--accent-color);
+      --text-color: var(--black-color);
+
+    }
+
+    &-head {
+      display: flex;
+      gap: mixins.toRem(16);
+      @media (width >=#{mixins.toEm(variables.$mobileSmall)}) {
+        align-items: center;
+      }
+    }
+
 
     i {
       width: mixins.toRem(56);
@@ -946,17 +1012,24 @@
       border-radius: mixins.toRem(10);
       background-color: var(--svg-bg);
       display: flex;
-      justify-content:center;align-items: center;
-      &:not(:last-child) {margin-bottom: mixins.toRem(60);}
+      justify-content: center;
+      align-items: center;
 
-      @media (width < #{mixins.toEm(variables.$tablet)}){
-        &:not(:last-child) {margin-bottom: mixins.toRem(42);}
-      }
+      // &:not(:last-child) {
+      //   margin-bottom: mixins.toRem(60);
+      // }
+
+      // @media (width < #{mixins.toEm(variables.$tablet)}) {
+      //   &:not(:last-child) {
+      //     margin-bottom: mixins.toRem(42);
+      //   }
+      // }
 
       svg {
         [fill] {
           fill: var(--svg-color);
         }
+
         [stroke] {
           stroke: var(--svg-color);
         }
@@ -967,20 +1040,14 @@
       font-weight: 600;
       line-height: 1.2;
       color: var(--text-color, var(--black-color));
-      margin-top: auto;
 
       @include mixins.adaptiveValue("font-size", 24, 20, 1500, 480);
     }
 
     p {
-      line-height: math.div(22 , 16);
+      line-height: math.div(22, 16);
       color: var(--text-color, var(--grey-color));
       @include mixins.adaptiveValue("font-size", 16, 14, 1280, 480);
-    }
-
-    @media (width < #{mixins.toEm(variables.$mobile)}){
-      width: calc(100vw - mixins.toRem(100));
-      max-width: mixins.toRem(380);
     }
   }
 }
@@ -991,8 +1058,7 @@
   @include mixins.adaptiveValue("padding-top", 60, 30);
   @include mixins.adaptiveValue("padding-bottom", 60, 30);
 
-  &__container {
-  }
+  &__container {}
 
   &__head {
     display: flex;
@@ -1007,8 +1073,8 @@
       color: var(--accent-color);
       text-decoration: underline;
 
-      @media (any-hover: hover){
-        &:hover{
+      @media (any-hover: hover) {
+        &:hover {
           color: var(--accent-hover-color);
           text-decoration: none;
         }
@@ -1023,16 +1089,19 @@
     @include mixins.adaptiveValue("font-size", 35, 22, 1920, 360);
   }
 
-  &__tabs {
-  }
+  &__tabs {}
 }
+
 .tabs-reviews {
 
   &__navigation {
     display: flex;
     flex-wrap: wrap;
     gap: mixins.toRem(10);
-    &:not(:last-child) {margin-bottom: mixins.toRem(20);}
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(20);
+    }
   }
 
   &__title {
@@ -1042,7 +1111,7 @@
     align-items: center;
     gap: mixins.toRem(8);
     color: var(--grey-color);
-    line-height: math.div(18 , 16);
+    line-height: math.div(18, 16);
 
     .loaded & {
       transition: all 0.3s ease 0s;
@@ -1054,12 +1123,11 @@
     }
   }
 
-  &__content {
-  }
+  &__content {}
 
-  &__body {
-  }
+  &__body {}
 }
+
 .text-reviews {
   display: grid;
   --max-item-width: min(#{mixins.toRem(413)}, 80vw);
@@ -1069,6 +1137,7 @@
   padding-top: mixins.toRem(36);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
@@ -1109,7 +1178,7 @@
   &__date {
     text-align: right;
     font-size: mixins.toRem(14);
-    line-height: math.div(22 , 14);
+    line-height: math.div(22, 14);
     color: var(--grey-color);
   }
 
@@ -1118,13 +1187,16 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    &:not(:last-child) {margin-bottom: mixins.toRem(20);}
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(20);
+    }
   }
 
   &__name {
     font-weight: 600;
     font-size: mixins.toRem(18);
-    line-height: math.div(26 , 18);
+    line-height: math.div(26, 18);
   }
 
   &__rate {
@@ -1133,8 +1205,11 @@
   }
 
   &__body {
-    line-height: math.div(22 , 16);
-    &:not(:last-child) {margin-bottom: mixins.toRem(86);}
+    line-height: math.div(22, 16);
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(86);
+    }
   }
 
   &__source {
@@ -1147,8 +1222,8 @@
     span {
       font-weight: 300;
       font-size: mixins.toRem(15);
-      line-height: math.div(22 , 15);
-      color:#000;
+      line-height: math.div(22, 15);
+      color: #000;
     }
 
     img {
@@ -1182,8 +1257,7 @@
   @include mixins.adaptiveValue("padding-top", 60, 30);
   @include mixins.adaptiveValue("padding-bottom", 100, 60);
 
-  &__container {
-  }
+  &__container {}
 
   &__head {
     display: flex;
@@ -1198,8 +1272,8 @@
       color: var(--accent-color);
       text-decoration: underline;
 
-      @media (any-hover: hover){
-        &:hover{
+      @media (any-hover: hover) {
+        &:hover {
           color: var(--accent-hover-color);
           text-decoration: none;
         }
@@ -1221,6 +1295,7 @@
     gap: mixins.toRem(20);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+
     &::-webkit-scrollbar {
       width: 0;
       height: 0;
@@ -1234,8 +1309,8 @@
     min-width: mixins.toRem(210);
     @include mixins.adaptiveValue("gap", 20, 12, 1280, 480);
 
-    @media (any-hover: hover){
-      &:hover{
+    @media (any-hover: hover) {
+      &:hover {
         .articles__name {
           color: var(--accent-color);
         }
@@ -1285,23 +1360,25 @@
   @include mixins.adaptiveValue("padding-top", 80, 30, 1280, 480);
   @include mixins.adaptiveValue("padding-bottom", 80, 40, 1280, 480);
 
-  &::before,&::after{
-    content:'';
+  &::before,
+  &::after {
+    content: '';
     position: absolute;
     top: 100%;
     width: 50%;
     height: mixins.toRem(50);
     background-color: var(--grey-dark-color);
   }
-  &::before{
+
+  &::before {
     left: 0;
   }
-  &::after{
+
+  &::after {
     right: 0;
   }
 
-  &__container {
-  }
+  &__container {}
 
   &__title {
     font-weight: 600;
@@ -1319,11 +1396,11 @@
     grid-template-columns: repeat(3, 1fr);
     gap: mixins.toRem(40) mixins.toRem(20);
 
-    @media (width < #{mixins.toEm(920)}){
+    @media (width < #{mixins.toEm(920)}) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (width < #{mixins.toEm(variables.$mobile)}){
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
       grid-template-columns: 1fr;
     }
   }
@@ -1336,7 +1413,8 @@
     >i {
       background-color: var(--white-color);
       display: flex;
-      justify-content:center;align-items: center;
+      justify-content: center;
+      align-items: center;
       width: var(--sz);
       height: var(--sz);
       flex: 0 0 var(--sz);
@@ -1345,8 +1423,8 @@
       @include mixins.adaptiveValue("--sz", 52, 42);
     }
 
-    @media (#{mixins.toEm(variables.$mobile)} < width < #{mixins.toEm(920)}){
-      &:last-child{
+    @media (#{mixins.toEm(variables.$mobile)} < width < #{mixins.toEm(920)}) {
+      &:last-child {
         grid-column: 1 / span 2;
       }
     }
@@ -1373,16 +1451,17 @@
     span {
       grid-column: 1 / span 2;
       font-size: mixins.toRem(12);
-      line-height: math.div(16 , 12);
+      line-height: math.div(16, 12);
       white-space: nowrap;
       opacity: 0.6;
     }
 
     i {
       display: flex;
-      justify-content:center;align-items: center;
+      justify-content: center;
+      align-items: center;
 
-      @media (width < #{mixins.toEm(variables.$tablet)}){
+      @media (width < #{mixins.toEm(variables.$tablet)}) {
         svg {
           width: mixins.toRem(18);
           height: mixins.toRem(18);
@@ -1394,19 +1473,20 @@
     p {
       font-weight: 600;
       font-size: mixins.toRem(20);
-      line-height: math.div(24 , 20);
+      line-height: math.div(24, 20);
       white-space: nowrap;
+
       .loaded & {
         transition: color 0.3s ease 0s;
       }
 
-      @media (width < #{mixins.toEm(variables.$tablet)}){
+      @media (width < #{mixins.toEm(variables.$tablet)}) {
         font-size: mixins.toRem(14);
       }
     }
 
-    @media (any-hover: hover){
-      &:hover{
+    @media (any-hover: hover) {
+      &:hover {
         p {
           color: var(--accent-color);
         }
@@ -1417,15 +1497,16 @@
   &__itemlink {
     text-decoration: underline;
     @include mixins.adaptiveValue("font-size", 16, 15, 767, 480);
-    @media (any-hover: hover){
-      &:hover{
+
+    @media (any-hover: hover) {
+      &:hover {
         text-decoration: none;
       }
     }
   }
 
   &__itemtext {
-    line-height: math.div(20 , 14);
+    line-height: math.div(20, 14);
     opacity: 0.7;
     font-size: mixins.toRem(14);
   }
