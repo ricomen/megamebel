@@ -1,0 +1,34 @@
+@use "sass:math";
+@use "/src/scss/base/mixins.scss";
+@use "/src/scss/variables.scss";
+
+.social {
+	display: flex;
+	gap: 4px;
+
+	&__item {
+		font-size: 0;
+		line-height: mixins.toRem(18);
+		width: mixins.toRem(18);
+		height: mixins.toRem(18);
+	}
+	
+	&__link {
+		display: block;
+		background-position: 50% 50%;
+		background-size: contain;
+		background-repeat: no-repeat;
+
+		&--tg {
+			background-image: url("../img/icons/tg.svg");
+		}
+
+		&--ws {
+			background-image: url("../img/icons/whatsapp.svg");
+		}
+
+		&--max {
+			background-image: url("../img/icons/max.svg");
+		}
+	}
+}

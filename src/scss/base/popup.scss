@@ -19,6 +19,11 @@ body::after {
 .popup-show body::after {
 	opacity: 1;
 }
+
+:root{
+  --popup-size-sm: 520px;
+}
+
 .popup {
 	position: fixed;
 	top: 0;
@@ -28,12 +33,15 @@ body::after {
 	transition: visibility 0.8s ease 0s;
 	visibility: hidden;
 	pointer-events: none;
+
   ._isChrome &::-webkit-scrollbar {
     width: mixins.toRem(4);
   }
+
   ._isChrome &::-webkit-scrollbar-thumb {
     border-color: transparent;
   }
+
   &_show {
     z-index: 150;
     visibility: visible;
@@ -74,7 +82,8 @@ body::after {
     border-radius: mixins.toRem(20);
     padding-top: mixins.toRem(30);
     width: 100%;
-    max-width: mixins.toRem(900);
+    // max-width: mixins.toRem(900);
+    max-width: var(--popup-size-sm); // Добавляю глобально, возможно нужно будет выпилить 
     position: relative;
     padding-left: var(--padding-left);
     padding-right: var(--padding-right);
@@ -179,5 +188,11 @@ body::after {
     @media (min-width:mixins.toEm(variables.$mobile)){
       display: none;
     }
+  }
+
+  &__title {
+    font-size: mixins.toEm(24);
+    font-weight: 600;
+    margin-bottom: mixins.toRem(20);
   }
 }

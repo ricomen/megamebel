@@ -4,17 +4,19 @@
 
 .quantity {
 	// width: mixins.toRem(114);
-  min-width: mixins.toRem(100);
+	min-width: mixins.toRem(100);
 	width: 100%;
 	height: mixins.toRem(50);
 	display: flex;
 	border: mixins.toRem(1) solid var(--stroke-color);
-  border-radius: mixins.toRem(15);
+	border-radius: mixins.toRem(15);
+
 	// .quantity__button
 	&__button {
 		flex: 0 0 mixins.toRem(30);
 		position: relative;
 		cursor: pointer;
+
 		&::before,
 		&::after {
 			content: "";
@@ -27,32 +29,37 @@
 			width: mixins.toRem(9);
 			height: mixins.toRem(2);
 		}
+
 		@media (any-hover: hover) {
 			&:hover {
+
 				&::before,
 				&::after {
 					background-color: rgba(0, 0, 0, 0.5);
 				}
 			}
 		}
+
 		// .quantity__button_plus
 		&_plus {
 			&::before {
 				transform: rotate(-90deg);
 			}
 		}
+
 		// .quantity__button_minus
-		&_minus {
-		}
+		&_minus {}
 	}
+
 	// .quantity__input
 	&__input {
 		flex: 1 1 auto;
+
 		input {
 			height: 100%;
 			color: var(--black-color);
 			font-size: mixins.toRem(14);
-      font-weight: 600;
+			font-weight: 600;
 			width: 100%;
 			text-align: center;
 		}

@@ -45,6 +45,7 @@
     display: flex;
     align-items: center;
     font-size: mixins.toRem(14);
+    gap: mixins.toRem(10);
 
     @media (width < #{mixins.toEm(variables.$pc)}){
       margin-left: auto;
@@ -52,7 +53,6 @@
   }
 
   &__mail {
-    padding: 0 mixins.toRem(9);
     color: var(--accent-color);
     .loaded & {
       transition: color 0.3s ease 0s;
@@ -70,7 +70,6 @@
   }
 
   &__callback {
-    padding: 0 mixins.toRem(9);
     font-weight: 600;
     color: var(--accent-color);
     .loaded & {
@@ -87,17 +86,17 @@
     }
   }
 
-  &__wa {
-    padding: 0 0 0 mixins.toRem(9);
-    color: var(--grey-color);
-    display: flex;
-    align-items: center;
-    gap: mixins.toRem(5);
+  // &__wa {
+  //   padding: 0 0 0 mixins.toRem(9);
+  //   color: var(--grey-color);
+  //   display: flex;
+  //   align-items: center;
+  //   gap: mixins.toRem(5);
 
-    @media (width < #{mixins.toEm(variables.$mobileSmall)}){
-      display: none;
-    }
-  }
+  //   @media (width < #{mixins.toEm(variables.$mobileSmall)}){
+  //     display: none;
+  //   }
+  // }
 }
 .menu-top-header {
   display: flex;

@@ -113,7 +113,20 @@ document.addEventListener('click', (e) => {
 document.addEventListener('formSent', (e) => {
   const { form, responseResult, formData } = e.detail;
 
-  if (form.closest('.authPopup')) authActions(form, responseResult, formData)
+  if (form.closest('.authPopup')) {
+    authActions(form, responseResult, formData);
+  }
+
+  let jsonResponse = null;
+  try {
+    jsonResponse = typeof responseResult === 'string' ? JSON.parse(responseResult) : responseResult;
+  } catch (error) {
+    console.warn(error);
+  }
+
+  if (jsonResponse) {
+    handleResponsePopup(jsonResponse);
+  }
 })
 
 document.addEventListener('watcherCallback', (e) => {
@@ -756,6 +769,33 @@ function onRestorePassSubmit(formData) {
 
   mhzModules.popup.open(successSelector);
 }
+
+function handleResponsePopup(response) {
+  if (!mhzModules?.popup) return;
+
+  const data = response?.DATA || {};
+  const popupId = data.popup;
+  if (!popupId) return;
+
+  const selector = `#${popupId}`;
+  const popup = document.querySelector(selector);
+  if (!popup) return;
+
+  const text =
+    data.TEXT ||
+    response.MESSAGE ||
+    '';
+
+  if (text) {
+    const textEl = popup.querySelector('.authPopup__text') || popup.querySelector('[data-popup-text]');
+    if (textEl) {
+      textEl.innerHTML = text;
+    }
+  }
+
+  mhzModules.popup.open(selector);
+}
+
 
 async function favComparsionBtnAction(target, actionType) {
   const productId = target?.closest('[data-product_id]')?.getAttribute('data-product_id');

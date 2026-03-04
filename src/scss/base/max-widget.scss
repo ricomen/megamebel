@@ -1,0 +1,25 @@
+@use "sass:math";
+@use "/src/scss/base/mixins.scss";
+@use "/src/scss/variables.scss";
+
+.max-widget {
+	position: fixed;
+	left: mixins.toRem(32);
+	bottom: mixins.toRem(32);
+	font-size: 0;
+	line-height: 1;
+	width: mixins.toRem(48);
+	height: mixins.toRem(48);
+	z-index: 3;
+	background-image: url("../img/icons/max-2.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50%;
+	filter: drop-shadow(0 19px 36px rgb(34 36 43));
+	
+	@media (width <=#{mixins.toEm(variables.$tablet)}) {
+		left: auto;
+		right: mixins.toRem(30);
+		bottom: mixins.toRem(96);
+	}
+}

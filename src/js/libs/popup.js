@@ -99,7 +99,7 @@ class Popup {
 		}
 		this.bodyLock = false;
 		this.options.init ? this.initPopups() : null;
-    this.triggerButton = null;
+		this.triggerButton = null;
 	}
 	initPopups() {
 		this.popupLogging(`Проснулся`);
@@ -122,7 +122,7 @@ class Popup {
 					if (!this.isOpen) this.lastFocusEl = buttonOpen;
 					this.targetOpen.selector = `${this._dataValue}`;
 					this._selectorOpen = true;
-          this.triggerButton = buttonOpen;
+					this.triggerButton = buttonOpen;
 					await this.open();
 					return;
 
@@ -170,167 +170,167 @@ class Popup {
 		}
 	}
 	async open(selectorValue) {
-    return new Promise(async resolve => {
-      if (!document.querySelector(selectorValue)) {
-        if (document.querySelector(`#${selectorValue}`)) {
-          selectorValue = `#${selectorValue}`
-        } else if (document.querySelector(`.${selectorValue}`)) {
-          selectorValue = `.${selectorValue}`
-        } else {
-          selectorValue = null
-        }
-      }
-      if (bodyLockStatus) {
-        // Если перед открытием попапа был режим lock
-        this.bodyLock = document.documentElement.classList.contains('lock') && !this.isOpen ? true : false;
-  
-        // Если ввести значение селектора (селектор настраивается в options)
-        if (selectorValue && typeof (selectorValue) === "string" && selectorValue.trim() !== "") {
-          this.targetOpen.selector = selectorValue;
-          this._selectorOpen = true;
-        }
-        if (this.isOpen) {
-          this._reopen = true;
-          await this.close();
-        }
-        if (!this._selectorOpen) this.targetOpen.selector = this.lastClosed.selector;
-        if (!this._reopen) this.previousActiveElement = document.activeElement;
-  
-        this.targetOpen.element = document.querySelector(this.targetOpen.selector);
-  
-        if (this.targetOpen.element) {
-          // YouTube
-          if (this.youTubeCode) {
-            const codeVideo = this.youTubeCode;
-            const urlVideo = `https://www.youtube.com/embed/${codeVideo}?rel=0&showinfo=0&autoplay=1`
-            const iframe = document.createElement('iframe');
-            iframe.setAttribute('allowfullscreen', '');
-  
-            const autoplay = this.options.setAutoplayYoutube ? 'autoplay;' : '';
-            iframe.setAttribute('allow', `${autoplay}; encrypted-media`);
-  
-            iframe.setAttribute('src', urlVideo);
-  
-            if (!this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) {
-              const youtubePlace = this.targetOpen.element.querySelector('.popup__text').setAttribute(`${this.options.youtubePlaceAttribute}`, '');
-            }
-            this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).appendChild(iframe);
-          }
-          if (this.options.hashSettings.location) {
-            // Получение хеша и его выставление
-            this._getHash();
-            if (!this.targetOpen.element.hasAttribute('data-nohash')) {
-              this._setHash();
-            }
-          }
-  
-          // К открытию
-          this.options.on.beforeOpen(this);
-          // Создаем свое событие после открытия попапа
-          document.dispatchEvent(new CustomEvent("beforePopupOpen", {
-            detail: {
-              popup: this
-            }
-          }));
-  
-          this.targetOpen.element.classList.add(this.options.classes.popupActive);
-          document.documentElement.classList.add(this.options.classes.bodyActive);
-  
-          if (!this._reopen) {
-            !this.bodyLock ? bodyLock() : null;
-          }
-          else this._reopen = false;
-  
-          this.targetOpen.element.setAttribute('aria-hidden', 'false');
-  
-          // Запомню это открытое окно. Оно будет последним открытым
-          this.previousOpen.selector = this.targetOpen.selector;
-          this.previousOpen.element = this.targetOpen.element;
-  
-          this._selectorOpen = false;
-  
-          this.isOpen = true;
-  
-          setTimeout(() => {
-            this._focusTrap();
-          }, 50);
-  
-          // После открытия
-          this.options.on.afterOpen(this);
-          // Создаем свое событие после открытия попапа
-          document.dispatchEvent(new CustomEvent("afterPopupOpen", {
-            detail: {
-              popup: this
-            }
-          }));
-          this.popupLogging(`Открыл попап`);
-  
-        } else this.popupLogging(`Ей, такого попа нет. Проверьте корректность ввода. `);
-      }
+		return new Promise(async resolve => {
+			if (!document.querySelector(selectorValue)) {
+				if (document.querySelector(`#${selectorValue}`)) {
+					selectorValue = `#${selectorValue}`
+				} else if (document.querySelector(`.${selectorValue}`)) {
+					selectorValue = `.${selectorValue}`
+				} else {
+					selectorValue = null
+				}
+			}
+			if (bodyLockStatus) {
+				// Если перед открытием попапа был режим lock
+				this.bodyLock = document.documentElement.classList.contains('lock') && !this.isOpen ? true : false;
 
-      resolve();
-    })
+				// Если ввести значение селектора (селектор настраивается в options)
+				if (selectorValue && typeof (selectorValue) === "string" && selectorValue.trim() !== "") {
+					this.targetOpen.selector = selectorValue;
+					this._selectorOpen = true;
+				}
+				if (this.isOpen) {
+					this._reopen = true;
+					await this.close();
+				}
+				if (!this._selectorOpen) this.targetOpen.selector = this.lastClosed.selector;
+				if (!this._reopen) this.previousActiveElement = document.activeElement;
+
+				this.targetOpen.element = document.querySelector(this.targetOpen.selector);
+
+				if (this.targetOpen.element) {
+					// YouTube
+					if (this.youTubeCode) {
+						const codeVideo = this.youTubeCode;
+						const urlVideo = `https://www.youtube.com/embed/${codeVideo}?rel=0&showinfo=0&autoplay=1`
+						const iframe = document.createElement('iframe');
+						iframe.setAttribute('allowfullscreen', '');
+
+						const autoplay = this.options.setAutoplayYoutube ? 'autoplay;' : '';
+						iframe.setAttribute('allow', `${autoplay}; encrypted-media`);
+
+						iframe.setAttribute('src', urlVideo);
+
+						if (!this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) {
+							const youtubePlace = this.targetOpen.element.querySelector('.popup__text').setAttribute(`${this.options.youtubePlaceAttribute}`, '');
+						}
+						this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).appendChild(iframe);
+					}
+					if (this.options.hashSettings.location) {
+						// Получение хеша и его выставление
+						this._getHash();
+						if (!this.targetOpen.element.hasAttribute('data-nohash')) {
+							this._setHash();
+						}
+					}
+
+					// К открытию
+					this.options.on.beforeOpen(this);
+					// Создаем свое событие после открытия попапа
+					document.dispatchEvent(new CustomEvent("beforePopupOpen", {
+						detail: {
+							popup: this
+						}
+					}));
+
+					this.targetOpen.element.classList.add(this.options.classes.popupActive);
+					document.documentElement.classList.add(this.options.classes.bodyActive);
+
+					if (!this._reopen) {
+						!this.bodyLock ? bodyLock() : null;
+					}
+					else this._reopen = false;
+
+					this.targetOpen.element.setAttribute('aria-hidden', 'false');
+
+					// Запомню это открытое окно. Оно будет последним открытым
+					this.previousOpen.selector = this.targetOpen.selector;
+					this.previousOpen.element = this.targetOpen.element;
+
+					this._selectorOpen = false;
+
+					this.isOpen = true;
+
+					setTimeout(() => {
+						this._focusTrap();
+					}, 50);
+
+					// После открытия
+					this.options.on.afterOpen(this);
+					// Создаем свое событие после открытия попапа
+					document.dispatchEvent(new CustomEvent("afterPopupOpen", {
+						detail: {
+							popup: this
+						}
+					}));
+					this.popupLogging(`Открыл попап`);
+
+				} else this.popupLogging(`Ей, такого попа нет. Проверьте корректность ввода. `);
+			}
+
+			resolve();
+		})
 	}
 	async close(selectorValue) {
-    return new Promise(resolve => {
-      if (selectorValue && typeof (selectorValue) === "string" && selectorValue.trim() !== "") {
-        this.previousOpen.selector = selectorValue;
-      }
-      if (!this.isOpen || !bodyLockStatus) {
-        return;
-      }
-      // К закрытию
-      this.options.on.beforeClose(this);
-      // Создаем свое событие перед закрытием попапа
-      let _this = this;
-      document.dispatchEvent(new CustomEvent("beforePopupClose", {
-        detail: {
-          popup: _this
-        }
-      }));
-  
-      // YouTube
-      if (this.youTubeCode) {
-        if (this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`))
-          this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).innerHTML = '';
-      }
-  
-      this.previousOpen.element.classList.add('_close');
+		return new Promise(resolve => {
+			if (selectorValue && typeof (selectorValue) === "string" && selectorValue.trim() !== "") {
+				this.previousOpen.selector = selectorValue;
+			}
+			if (!this.isOpen || !bodyLockStatus) {
+				return;
+			}
+			// К закрытию
+			this.options.on.beforeClose(this);
+			// Создаем свое событие перед закрытием попапа
+			let _this = this;
+			document.dispatchEvent(new CustomEvent("beforePopupClose", {
+				detail: {
+					popup: _this
+				}
+			}));
 
-      setTimeout(() => {
-        this.previousOpen.element.classList.remove('_close');
-        this.previousOpen.element.classList.remove(this.options.classes.popupActive);
-        // aria-hidden
-        this.previousOpen.element.setAttribute('aria-hidden', 'true');
-        if (!this._reopen) {
-          document.documentElement.classList.remove(this.options.classes.bodyActive);
-          !this.bodyLock ? bodyUnlock() : null;
-          this.isOpen = false;
-        }
-        // Очистка адресной строки
-        this._removeHash();
-        if (this._selectorOpen) {
-          this.lastClosed.selector = this.previousOpen.selector;
-          this.lastClosed.element = this.previousOpen.element;
-    
-        }
-        // После закрытия
-        this.options.on.afterClose(this);
-        // Создаем свое событие после закрытия попапа
-        document.dispatchEvent(new CustomEvent("afterPopupClose", {
-          detail: {
-            popup: this
-          }
-        }));
-    
-        setTimeout(() => {
-          this._focusTrap();
-        }, 50);
-    
-        this.popupLogging(`Закрыл попап`);
-        resolve(`Закрыл попап`)
-      }, 300);
-    })
+			// YouTube
+			if (this.youTubeCode) {
+				if (this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`))
+					this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).innerHTML = '';
+			}
+
+			this.previousOpen.element.classList.add('_close');
+
+			setTimeout(() => {
+				this.previousOpen.element.classList.remove('_close');
+				this.previousOpen.element.classList.remove(this.options.classes.popupActive);
+				// aria-hidden
+				this.previousOpen.element.setAttribute('aria-hidden', 'true');
+				if (!this._reopen) {
+					document.documentElement.classList.remove(this.options.classes.bodyActive);
+					!this.bodyLock ? bodyUnlock() : null;
+					this.isOpen = false;
+				}
+				// Очистка адресной строки
+				this._removeHash();
+				if (this._selectorOpen) {
+					this.lastClosed.selector = this.previousOpen.selector;
+					this.lastClosed.element = this.previousOpen.element;
+
+				}
+				// После закрытия
+				this.options.on.afterClose(this);
+				// Создаем свое событие после закрытия попапа
+				document.dispatchEvent(new CustomEvent("afterPopupClose", {
+					detail: {
+						popup: this
+					}
+				}));
+
+				setTimeout(() => {
+					this._focusTrap();
+				}, 50);
+
+				this.popupLogging(`Закрыл попап`);
+				resolve(`Закрыл попап`)
+			}, 300);
+		})
 	}
 	// Получение хеша
 	_getHash() {
@@ -341,28 +341,28 @@ class Popup {
 	}
 	async _openToHash() {
 		let classInHash = null;
-    if (document.querySelector(`.popup${window.location.hash}`)) {
-      classInHash = `${window.location.hash}`
-    } else if (document.querySelector(`.popup.${window.location.hash.replace('#', '')}`)) {
-      classInHash = `.${window.location.hash.replace('#', '')}`;
-    }
+		if (document.querySelector(`.popup${window.location.hash}`)) {
+			classInHash = `${window.location.hash}`
+		} else if (document.querySelector(`.popup.${window.location.hash.replace('#', '')}`)) {
+			classInHash = `.${window.location.hash.replace('#', '')}`;
+		}
 
-    // let condition = !document.querySelector(classInHash)?.hasAttribute('data-nohash');
-    // TODO вернуть на место
-    let condition = true;
-    
-    if (classInHash&&condition) {
-      const buttons = 
-        document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ? 
-        document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) : 
-        document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash?.replace('.', "#")}"]`);
-  
-      this.youTubeCode = buttons&&buttons.getAttribute(this.options.youtubeAttribute) ?
-        buttons.getAttribute(this.options.youtubeAttribute) :
-        null;
-  
-      await this.open(classInHash);
-    }
+		let condition = !document.querySelector(classInHash)?.hasAttribute('data-nohash');
+		// TODO вернуть на место
+		// let condition = true;
+
+		if (classInHash && condition) {
+			const buttons =
+				document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ?
+					document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) :
+					document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash?.replace('.', "#")}"]`);
+
+			this.youTubeCode = buttons && buttons.getAttribute(this.options.youtubeAttribute) ?
+				buttons.getAttribute(this.options.youtubeAttribute) :
+				null;
+
+			await this.open(classInHash);
+		}
 	}
 	// Установка хеша
 	_setHash() {

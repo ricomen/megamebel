@@ -6,10 +6,10 @@
 .authPopup {
 
   &__content {
-    max-width: mixins.toRem(520);
+    max-width: var(--popup-size-sm);
     padding: mixins.toRem(30);
 
-    @media (width < #{mixins.toEm(variables.$mobileSmall)}){
+    @media (width < #{mixins.toEm(variables.$mobileSmall)}) {
       padding: mixins.toRem(60) mixins.toRem(15) mixins.toRem(30);
     }
 
@@ -27,14 +27,19 @@
   }
 
   &__logo {
-    &:not(:last-child) {margin-bottom: mixins.toRem(28);}
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(28);
+    }
   }
 
   &__uptitle {
     color: var(--grey-color);
     font-size: mixins.toRem(13);
-    line-height: math.div(18 , 13);
-    &:not(:last-child) {margin-bottom: mixins.toRem(18);}
+    line-height: math.div(18, 13);
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(18);
+    }
 
     a {
       color: var(--accent-color);
@@ -59,24 +64,30 @@
     font-size: var(--font-size);
     letter-spacing: mixins.lsp(-3);
     --font-size: #{mixins.toRem(24)};
-    line-height: math.div(34 , 24);
+    line-height: math.div(34, 24);
     text-align: center;
-    &:not(:last-child) {margin-bottom: mixins.toRem(14);}
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(14);
+    }
   }
 
   &__subtitle {
     text-align: center;
     color: var(--grey-color);
     font-size: mixins.toRem(14);
-    line-height: math.div(20 , 14);
-    &:not(:last-child) {margin-bottom: mixins.toRem(24);}
+    line-height: math.div(20, 14);
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(24);
+    }
 
     a {
       color: var(--accent-color);
       text-decoration: underline;
 
-      @media (any-hover: hover){
-        &:hover{
+      @media (any-hover: hover) {
+        &:hover {
           color: var(--accent-hover-color);
           text-decoration: none;
         }
@@ -89,16 +100,21 @@
     flex-direction: column;
     gap: mixins.toRem(12);
     align-self: stretch;
-    &:not(:last-child) {margin-bottom: mixins.toRem(12);}
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(12);
+    }
   }
 
-  &__item {
-  }
+  &__item {}
 
   &__text {
-    line-height: math.div(22 , 16);
+    line-height: math.div(22, 16);
     text-align: center;
-    &:not(:last-child) {margin-bottom: mixins.toRem(28);}
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(28);
+    }
   }
 
   &__submit {
@@ -110,20 +126,26 @@
     color: var(--grey-color);
     font-weight: 300;
     font-size: mixins.toRem(14);
-    line-height: math.div(20 , 14);
-    &:not(:last-child) {margin-bottom: mixins.toRem(20);}
+    line-height: math.div(20, 14);
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(20);
+    }
   }
 
   &__or {
     display: flex;
-    justify-content:center;align-items: center;
+    justify-content: center;
+    align-items: center;
     align-self: stretch;
     position: relative;
 
-    &:not(:last-child) {margin-bottom: mixins.toRem(20);}
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(20);
+    }
 
-    &::before{
-      content:'';
+    &::before {
+      content: '';
       position: absolute;
       left: 0;
       top: 50%;
@@ -138,7 +160,7 @@
       position: relative;
       padding: 0 mixins.toRem(20);
       color: var(--grey-color-50);
-      line-height: math.div(22 , 16);
+      line-height: math.div(22, 16);
     }
   }
 
@@ -173,12 +195,13 @@
 
   &__button {
     display: flex;
-    justify-content:center;align-items: center;
+    justify-content: center;
+    align-items: center;
     gap: mixins.toRem(10);
     height: mixins.toRem(50);
     border-radius: mixins.toRem(15);
     border: mixins.toRem(1) solid var(--stroke-color);
-    line-height: math.div(22 , 16);
+    line-height: math.div(22, 16);
     font-weight: 600;
   }
 
@@ -190,15 +213,14 @@
     color: var(--accent-color);
     text-decoration: underline;
 
-    @media (any-hover: hover){
-      &:hover{
+    @media (any-hover: hover) {
+      &:hover {
         color: var(--accent-hover-color);
         text-decoration: none;
       }
     }
   }
 }
-
 
 .deliveryPopup {
 
@@ -223,13 +245,18 @@
   }
 
   &__section {
-    &:not(:last-child) {margin-bottom: mixins.toRem(30);}
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(30);
+    }
   }
 
   &__sectiontitle {
     font-size: mixins.toRem(24);
     font-weight: 600;
-    &:not(:last-child) {margin-bottom: mixins.toRem(20);}
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(20);
+    }
   }
 
   &__items {
@@ -279,7 +306,11 @@
     max-width: 100%;
     overflow: auto;
 
-    h1, h2, h3, h4, h5 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
       font-weight: 700;
     }
 
@@ -288,7 +319,7 @@
       font-size: mixins.toRem(14);
 
       @media (any-hover: hover) {
-        &:hover{
+        &:hover {
           text-decoration: underline;
         }
       }
@@ -297,7 +328,10 @@
 
   &__table {
     border-collapse: collapse;
-    &:not(:last-child) {margin-bottom: mixins.toRem(30);}
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(30);
+    }
 
     caption {
       caption-side: bottom;
@@ -305,7 +339,9 @@
       padding: mixins.toRem(12) 0;
       color: var(--grey-color);
     }
-    td, th {
+
+    td,
+    th {
       padding: mixins.toRem(12) mixins.toRem(15);
       border-top: mixins.toRem(1) solid var(--stroke-color);
       text-align-last: left;
@@ -331,4 +367,51 @@
       }
     }
   }
+}
+
+.popup {
+  &--buy1click {
+    .popup__body {
+      display: flex;
+      flex-direction: column;
+      gap: mixins.toRem(12);
+    }
+
+    .description {
+      display: flex;
+      align-items: center;
+      gap: mixins.toRem(24);
+      margin-bottom: mixins.toRem(16);
+
+      &__image {
+        width: mixins.toRem(200);
+        height: mixins.toRem(200);
+        object-fit: cover;
+
+        @media (width <=#{mixins.toEm(variables.$mobile)}) {
+          width: mixins.toRem(140);
+          height: mixins.toRem(140);
+        }
+      }
+
+      &__label {
+        .type {
+          font-size: mixins.toRem(14);      
+          color: var(--grey-color);
+        }
+        .model {
+          font-size: mixins.toRem(16);
+          font-weight: 600;
+        }
+        .price {
+          font-size: mixins.toRem(18);
+          font-weight: 700;
+        }
+        p + p {
+          margin-top: mixins.toRem(4);
+        }
+      }
+    }
+  }
+
 }

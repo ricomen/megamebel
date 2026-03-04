@@ -46,10 +46,10 @@ export function formFieldsInit(options = { viewPass: false }) {
 			if (!targetElement.hasAttribute('data-no-focus-classes')) {
 				targetElement.classList.remove('_form-focus');
 				targetElement.parentElement.classList.remove('_form-focus');
-        if (!targetElement.value.trim()) {
-          targetElement.classList.remove('_form-input');
-          targetElement.parentElement.classList.remove('_form-input');
-        }
+				if (!targetElement.value.trim()) {
+					targetElement.classList.remove('_form-input');
+					targetElement.parentElement.classList.remove('_form-input');
+				}
 			}
 			// Моментальная валидация
 			if (targetElement.hasAttribute('data-validate')) {
@@ -62,7 +62,7 @@ export function formFieldsInit(options = { viewPass: false }) {
 	if (options.viewPass) {
 		document.addEventListener("click", function (e) {
 			let targetElement = e.target;
-      const viewPassEl = targetElement.closest('[class*="__viewpass"]');
+			const viewPassEl = targetElement.closest('[class*="__viewpass"]');
 			if (viewPassEl) {
 				let inputType = viewPassEl.classList.contains('_viewpass-active') ? "password" : "text";
 				viewPassEl.parentElement?.querySelector('input').setAttribute("type", inputType);
@@ -73,10 +73,10 @@ export function formFieldsInit(options = { viewPass: false }) {
 }
 // Валидация форм
 export let formValidate = {
-  setErrors: true,
+	setErrors: true,
 	getErrors(form, setErrors = true) {
 		let error = 0;
-    this.setErrors = setErrors;
+		this.setErrors = setErrors;
 		let formRequiredItems = form.querySelectorAll('*[data-required]');
 		if (formRequiredItems.length) {
 			formRequiredItems.forEach(formRequiredItem => {
@@ -89,19 +89,19 @@ export let formValidate = {
 	},
 	validateInput(formRequiredItem) {
 		let error = 0;
-    if (formRequiredItem.pininput) {
-      const value = formRequiredItem.pininput.value;
-      const count = formRequiredItem.pininput.count;
-      if (value.length < count) {
-        this.addError(formRequiredItem);
-        error++;
-      } else {
+		if (formRequiredItem.pininput) {
+			const value = formRequiredItem.pininput.value;
+			const count = formRequiredItem.pininput.count;
+			if (value.length < count) {
+				this.addError(formRequiredItem);
+				error++;
+			} else {
 				this.removeError(formRequiredItem);
 			}
-    } else if (formRequiredItem.dataset.required === "email") {
-      if (!formRequiredItem.inputmask) {
-        formRequiredItem.value = formRequiredItem.value.replace(" ", "");
-      }
+		} else if (formRequiredItem.dataset.required === "email") {
+			if (!formRequiredItem.inputmask) {
+				formRequiredItem.value = formRequiredItem.value.replace(" ", "");
+			}
 			if (this.emailTest(formRequiredItem)) {
 				this.addError(formRequiredItem);
 				error++;
@@ -124,36 +124,36 @@ export let formValidate = {
 				this.removeError(formRequiredItem);
 			}
 		} else if (formRequiredItem.dataset.required === "password") {
-      const parentForm = formRequiredItem.closest('form');
-      const passwordRequireds = parentForm.querySelectorAll('[data-required="password"]');
-      let errorText = this.passwordTest(passwordRequireds);
-			if (passwordRequireds.length&&errorText) {
-        passwordRequireds.forEach(e=>{
-          this.addError(e, errorText);
-        })
+			const parentForm = formRequiredItem.closest('form');
+			const passwordRequireds = parentForm.querySelectorAll('[data-required="password"]');
+			let errorText = this.passwordTest(passwordRequireds);
+			if (passwordRequireds.length && errorText) {
+				passwordRequireds.forEach(e => {
+					this.addError(e, errorText);
+				})
 				error++;
 			} else {
-        passwordRequireds.forEach(e=>{
-          this.removeError(e, errorText);
-        })
+				passwordRequireds.forEach(e => {
+					this.removeError(e, errorText);
+				})
 			}
 		} else if (formRequiredItem.type === "checkbox" && !formRequiredItem.checked) {
 			this.addError(formRequiredItem);
 			error++;
 		} else if (formRequiredItem.type === "radio") {
-      let name = formRequiredItem.name;
-      if (!document.querySelector(`input[name="${name}"]:checked`)) {
+			let name = formRequiredItem.name;
+			if (!document.querySelector(`input[name="${name}"]:checked`)) {
 				this.addError(formRequiredItem);
 				error++;
-      } else {
+			} else {
 				this.removeError(formRequiredItem);
 			}
-    } else {
+		} else {
 			if (!formRequiredItem.value.trim()) {
-        if (!formRequiredItem.hidden&&!formRequiredItem.closest('[hidden]')) {
-          this.addError(formRequiredItem);
-          error++;
-        }
+				if (!formRequiredItem.hidden && !formRequiredItem.closest('[hidden]')) {
+					this.addError(formRequiredItem);
+					error++;
+				}
 			} else {
 				this.removeError(formRequiredItem);
 			}
@@ -161,45 +161,45 @@ export let formValidate = {
 		return error;
 	},
 	addError(formRequiredItem, errorTextArg) {
-    if (!this.setErrors) return;
+		if (!this.setErrors) return;
 		let inputError = formRequiredItem.parentElement.querySelector('.form__error');
 		if (inputError) formRequiredItem.parentElement.removeChild(inputError);
-    let errorText = errorTextArg || formRequiredItem.dataset.error;
-		if (errorText&&errorText.trim) {
+		let errorText = errorTextArg || formRequiredItem.dataset.error;
+		if (errorText && errorText.trim) {
 			formRequiredItem.parentElement.insertAdjacentHTML('beforeend', `<div class="form__error">${errorText}</div>`);
 		}
-    setTimeout(() => {
-      formRequiredItem.classList.add('_form-error');
-      formRequiredItem.parentElement.classList.add('_form-error');
-    }, 0);
+		setTimeout(() => {
+			formRequiredItem.classList.add('_form-error');
+			formRequiredItem.parentElement.classList.add('_form-error');
+		}, 0);
 	},
 	removeError(formRequiredItem) {
 		formRequiredItem.classList.remove('_form-error');
 		formRequiredItem.parentElement.classList.remove('_form-error');
-    const parentError = formRequiredItem.parentElement.querySelector('.form__error');
+		const parentError = formRequiredItem.parentElement.querySelector('.form__error');
 		if (parentError) {
-      formRequiredItem.parentElement.removeChild(parentError);
+			formRequiredItem.parentElement.removeChild(parentError);
 		}
-    if (formRequiredItem.closest('[class*="pininput"]')) {
-      formRequiredItem.parentElement.parentElement.classList.remove('_form-error');
-      const parentParentError = formRequiredItem.parentElement.parentElement.querySelector('.form__error');
-      if (parentParentError) {
-        formRequiredItem.parentElement.parentElement.removeChild(parentParentError);
-      }
-    }
+		if (formRequiredItem.closest('[class*="pininput"]')) {
+			formRequiredItem.parentElement.parentElement.classList.remove('_form-error');
+			const parentParentError = formRequiredItem.parentElement.parentElement.querySelector('.form__error');
+			if (parentParentError) {
+				formRequiredItem.parentElement.parentElement.removeChild(parentParentError);
+			}
+		}
 	},
 	formClean(form) {
-    if (form.tagName === 'FORM') {
-      form.reset();
-    }
+		if (form.tagName === 'FORM') {
+			form.reset();
+		}
 		setTimeout(() => {
 			let inputs = form.querySelectorAll('input,textarea');
 			for (let index = 0; index < inputs.length; index++) {
 				const el = inputs[index];
 				el.parentElement.classList.remove('_form-focus');
 				el.classList.remove('_form-focus');
-        el.parentElement.classList.remove('_form-input');
-        el.classList.remove('_form-input');
+				el.parentElement.classList.remove('_form-input');
+				el.classList.remove('_form-input');
 				formValidate.removeError(el);
 			}
 			let checkboxes = form.querySelectorAll('[type="checkbox"],[type="radio"]');
@@ -207,16 +207,16 @@ export let formValidate = {
 				for (let index = 0; index < checkboxes.length; index++) {
 					const checkbox = checkboxes[index];
 					checkbox.checked = false;
-          checkbox.parentElement.classList.remove('_form-input');
-          checkbox.classList.remove('_form-input');
+					checkbox.parentElement.classList.remove('_form-input');
+					checkbox.classList.remove('_form-input');
 				}
 			}
-      let ratings = form.querySelectorAll('.rating');
+			let ratings = form.querySelectorAll('.rating');
 			if (ratings.length > 0) {
 				for (let index = 0; index < ratings.length; index++) {
 					const rating = ratings[index];
-          rating.querySelector('.rating__active') ? rating.querySelector('.rating__active').style.removeProperty('width') : null;
-          rating.querySelector('.rating__value') ? rating.querySelector('.rating__value').innerHTML=0 : null;
+					rating.querySelector('.rating__active') ? rating.querySelector('.rating__active').style.removeProperty('width') : null;
+					rating.querySelector('.rating__value') ? rating.querySelector('.rating__value').innerHTML = 0 : null;
 				}
 			}
 			if (mhzModules.select) {
@@ -233,33 +233,33 @@ export let formValidate = {
 	emailTest(formRequiredItem) {
 		return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
 	},
-  fioTest: e=>!/^.+\s.+\s?.*$/i.test(e.value),
-  passwordTest(passwordRequireds) {
-    if (passwordRequireds.length > 1) {
-      let answer = false;
-      let pass = passwordRequireds[0].value;
-      if (!pass.trim()) {
-        return passwordRequireds[0].dataset.error || '';
-      }
-      for (let index = 0; index < passwordRequireds.length; index++) {
-        const element = passwordRequireds[index];
-        let pattern = element.dataset.pattern;
-        if (pattern) {
-          pattern = new RegExp(pattern);
-          if (!pattern.test(element.value)) {
-            answer = element.dataset.error || '';
-            break;
-          }
-        }
-        if (element.value.trim()&&element.value !== pass) {
-          answer = 'Пароли не совпадают';
-          break;
-        }
-      }
+	fioTest: e => !/^.+\s.+\s?.*$/i.test(e.value),
+	passwordTest(passwordRequireds) {
+		if (passwordRequireds.length > 1) {
+			let answer = false;
+			let pass = passwordRequireds[0].value;
+			if (!pass.trim()) {
+				return passwordRequireds[0].dataset.error || '';
+			}
+			for (let index = 0; index < passwordRequireds.length; index++) {
+				const element = passwordRequireds[index];
+				let pattern = element.dataset.pattern;
+				if (pattern) {
+					pattern = new RegExp(pattern);
+					if (!pattern.test(element.value)) {
+						answer = element.dataset.error || '';
+						break;
+					}
+				}
+				if (element.value.trim() && element.value !== pass) {
+					answer = 'Пароли не совпадают';
+					break;
+				}
+			}
 
-      return answer;
-    }
-  },
+			return answer;
+		}
+	},
 	phoneTest(formRequiredItem) {
 		return !/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/.test(formRequiredItem.value.replace(/\-|\s/g, ''));
 	}
@@ -281,7 +281,7 @@ export function formSubmit() {
 		}
 	}
 	async function formSubmitAction(form, e) {
-    const error = !form.hasAttribute('data-no-validate') ? formValidate.getErrors(form) : 0;
+		const error = !form.hasAttribute('data-no-validate') ? formValidate.getErrors(form) : 0;
 		if (error === 0) {
 			const ajax = form.hasAttribute('data-ajax');
 			if (ajax) { // Если режим ajax
@@ -289,19 +289,19 @@ export function formSubmit() {
 				let formAction = form.getAttribute('action') ? form.getAttribute('action').trim() : '#';
 				const formMethod = form.getAttribute('method') ? form.getAttribute('method').trim() : 'GET';
 				const formData = new FormData(form);
-        if (window.BX) {
-          formData.set('sessid', BX.bitrix_sessid());
-        }
+				if (window.BX) {
+					formData.set('sessid', BX.bitrix_sessid());
+				}
 
 				form.classList.add('_sending');
-        const options = {
+				const options = {
 					method: formMethod
-        }
-        if (formMethod !== 'GET') {
-          options.body = formData;
-        } else {
-          formAction = `${formAction}${getFormParams(form)}`
-        }
+				}
+				if (formMethod !== 'GET') {
+					options.body = formData;
+				} else {
+					formAction = `${formAction}${getFormParams(form)}`
+				}
 				const response = await fetch(formAction, options);
 				if (response.ok) {
 					let responseResult = await response.text();
@@ -309,21 +309,21 @@ export function formSubmit() {
 					formSent(form, responseResult, formData);
 				} else {
 					let responseResult = await response.text();
-          formError(form, responseResult);
+					formError(form, responseResult);
 					form.classList.remove('_sending');
 				}
 			} else if (form.hasAttribute('data-dev')) {	// Если режим разработки
 				e.preventDefault();
 				form.classList.add('_sending');
-        setTimeout(() => {
-          const random = Math.random();
-          if (random >= 0.5) {
-            formSent(form);
-          } else {
-            formError(form);
-          }
+				setTimeout(() => {
+					const random = Math.random();
+					if (random >= 0.5) {
+						formSent(form);
+					} else {
+						formError(form);
+					}
 					form.classList.remove('_sending');
-        }, 2000);
+				}, 2000);
 			}
 		} else {
 			e.preventDefault();
@@ -333,34 +333,35 @@ export function formSubmit() {
 			}
 		}
 	}
-  function getFormParams(form) {
-    let answer = '';
-    const inputs = form?.querySelectorAll('input');
+	function getFormParams(form) {
+		let answer = '';
+		const inputs = form?.querySelectorAll('input');
 
-    if (!inputs.length) return answer;
+		if (!inputs.length) return answer;
 
-    inputs.forEach(input=>{
-      let name = input.name;
-      let value = input.value;
-      if (name.trim()&&value.trim()) {
-        answer += `${answer.includes('?' ? '&' : '?')}${name}=${value}`
-      }
-    })
+		inputs.forEach(input => {
+			let name = input.name;
+			let value = input.value;
+			if (name.trim() && value.trim()) {
+				answer += `${answer.includes('?' ? '&' : '?')}${name}=${value}`
+			}
+		})
 
-    return answer;
-  }
+		return answer;
+	}
+	
 	// Действия после отправки формы
 	function formSent(form, responseResult = `{"success": true}`, formData) {
 		// Создаем событие отправки формы
 		document.dispatchEvent(new CustomEvent("formSent", {
 			detail: {
 				form,
-        responseResult,
-        formData
+				responseResult,
+				formData
 			}
 		}));
 		// Попап показывает, если подключен модуль попапов
-    // и для формы указана настройка
+		// и для формы указана настройка
 		setTimeout(() => {
 			formSuccess(form);
 		}, 0);
@@ -370,41 +371,41 @@ export function formSubmit() {
 		formLogging(`Форма отправлена!`);
 	}
 
-  async function formSuccess(form) {
-    if (!mhzModules.popup) return;
+	async function formSuccess(form) {
+		if (!mhzModules.popup) return;
 
 		const popup = form.dataset.popupSuccess;
-    if (!popup) return;
+		if (!popup) return;
 
-    await mhzModules.popup.open(popup);
-    
-    let timeout = Number(form.dataset.timeout);
+		await mhzModules.popup.open(popup);
 
-    if (!Number.isInteger(timeout)) {
-      timeout = 2000
-    }
+		let timeout = Number(form.dataset.timeout);
 
-    setTimeout(() => {
-      mhzModules.popup.close(popup);
-    }, timeout);
-  }
-  async function formError(form) {
-    if (!mhzModules.popup) return;
+		if (!Number.isInteger(timeout)) {
+			timeout = 2000
+		}
 
-    const popup = form.dataset.popupError;
-    if (!popup) return;
-    await mhzModules.popup.open(popup);
-    
-    let timeout = Number(form.dataset.timeout);
+		setTimeout(() => {
+			mhzModules.popup.close(popup);
+		}, timeout);
+	}
+	async function formError(form) {
+		if (!mhzModules.popup) return;
 
-    if (!Number.isInteger(timeout)) {
-      timeout = 2000
-    }
+		const popup = form.dataset.popupError;
+		if (!popup) return;
+		await mhzModules.popup.open(popup);
 
-    setTimeout(() => {
-      mhzModules.popup.close(popup);
-    }, timeout);
-  }
+		let timeout = Number(form.dataset.timeout);
+
+		if (!Number.isInteger(timeout)) {
+			timeout = 2000
+		}
+
+		setTimeout(() => {
+			mhzModules.popup.close(popup);
+		}, timeout);
+	}
 
 	function formLogging(message) {
 		FLS(`[Форми]: ${message}`);
@@ -414,65 +415,65 @@ export function formSubmit() {
 export function formQuantity() {
 	document.addEventListener("click", function (e) {
 		let targetElement = e.target;
-    let disEvt = true;
+		let disEvt = true;
 		if (targetElement.closest('.quantity__button')) {
-      const parent = targetElement.closest('[data-quantity]');
-      if (parent) {
-        const input = parent.querySelector('input');
-        if (input) {
-          let value = parseInt(input.value);
-          let max = input.max || Infinity;
-          let min = input.min || 1;
-          const plusBtn = parent.querySelector('.quantity__button_plus');
-          const minusBtn = parent.querySelector('.quantity__button_minus');
-          if (targetElement.classList.contains('quantity__button_plus')) {
-            minusBtn.disabled = false;
-            if (value < max) {
-              value++;
-            } else {
-              plusBtn.disabled = true;
-            }
-          } else {
-            --value;
-            plusBtn.disabled = false;
-            disEvt = true;
-            if (value < min) {
-              value = min;
-              minusBtn.disabled = true;
-              disEvt = false;
-              setMinQuantityEvt(value, parent);
-            }
-          }
-          input.value = value;
-          input.setAttribute('value', value);
+			const parent = targetElement.closest('[data-quantity]');
+			if (parent) {
+				const input = parent.querySelector('input');
+				if (input) {
+					let value = parseInt(input.value);
+					let max = input.max || Infinity;
+					let min = input.min || 1;
+					const plusBtn = parent.querySelector('.quantity__button_plus');
+					const minusBtn = parent.querySelector('.quantity__button_minus');
+					if (targetElement.classList.contains('quantity__button_plus')) {
+						minusBtn.disabled = false;
+						if (value < max) {
+							value++;
+						} else {
+							plusBtn.disabled = true;
+						}
+					} else {
+						--value;
+						plusBtn.disabled = false;
+						disEvt = true;
+						if (value < min) {
+							value = min;
+							minusBtn.disabled = true;
+							disEvt = false;
+							setMinQuantityEvt(value, parent);
+						}
+					}
+					input.value = value;
+					input.setAttribute('value', value);
 
-          if (disEvt) {
-            const event = new CustomEvent('changeQuantity', {
-              bubbles: true,
-              detail: {
-                parent,
-                value
-              }
-            });
-  
-            parent.dispatchEvent(event);
-          }
-        }
-      }
+					if (disEvt) {
+						const event = new CustomEvent('changeQuantity', {
+							bubbles: true,
+							detail: {
+								parent,
+								value
+							}
+						});
+
+						parent.dispatchEvent(event);
+					}
+				}
+			}
 		}
 	});
 }
 
 function setMinQuantityEvt(value, parent) {
-  const event = new CustomEvent('isMinQuantityDestination', {
-    bubbles: true,
-    detail: {
-      parent,
-      value
-    }
-  });
+	const event = new CustomEvent('isMinQuantityDestination', {
+		bubbles: true,
+		detail: {
+			parent,
+			value
+		}
+	});
 
-  parent.dispatchEvent(event);
+	parent.dispatchEvent(event);
 }
 
 
