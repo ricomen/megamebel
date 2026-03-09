@@ -8,6 +8,7 @@ const pages = [
   {name: 'cart', path: resolve(__dirname, '../pages/cart.html')},
   {name: 'checkout', path: resolve(__dirname, '../pages/checkout.html')},
   {name: 'comparsion', path: resolve(__dirname, '../pages/comparsion.html')},
+  {name: 'ui-kit', path: resolve(__dirname, '../pages/ui-kit.html')},
 ];
 
 export default pages

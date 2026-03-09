@@ -1,0 +1,278 @@
+@use "sass:math";
+@use "/src/scss/base/mixins.scss";
+@use "/src/scss/variables.scss";
+
+.uikit-demo {
+  @include mixins.adaptiveValue("padding-top", 24, 16, 1280, 480);
+  @include mixins.adaptiveValue("padding-bottom", 80, 40, 1280, 480);
+
+  &__intro {
+    max-width: mixins.toRem(760);
+
+    &:not(:last-child) {
+      @include mixins.adaptiveValue("margin-bottom", 32, 20, 1280, 480);
+    }
+  }
+
+  &__eyebrow {
+    font-size: mixins.toRem(13);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-color);
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(10);
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    line-height: 1.15;
+    @include mixins.adaptiveValue("font-size", 34, 24, 1280, 480);
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(12);
+    }
+  }
+
+  &__text {
+    color: var(--grey-color);
+    line-height: 1.5;
+    max-width: mixins.toRem(620);
+  }
+
+  &__grid {
+    display: grid;
+    gap: mixins.toRem(20);
+
+    @media (width >= #{mixins.toEm(variables.$tablet)}) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__card {
+    background-color: var(--plate-bg-color);
+    border: mixins.toRem(1) solid var(--stroke-color);
+    border-radius: mixins.toRem(20);
+    @include mixins.adaptiveValue("padding", 28, 18, 1280, 480);
+  }
+
+  &__card_wide {
+    @media (width >= #{mixins.toEm(variables.$tablet)}) {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  &__cardhead {
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(20);
+    }
+
+    h3 {
+      font-size: mixins.toRem(22);
+      font-weight: 600;
+      line-height: 1.2;
+
+      &:not(:last-child) {
+        margin-bottom: mixins.toRem(8);
+      }
+    }
+
+    p {
+      color: var(--grey-color);
+      line-height: 1.45;
+    }
+  }
+
+  &__stack {
+    display: grid;
+    gap: mixins.toRem(14);
+  }
+
+  &__line {
+    padding: mixins.toRem(12) mixins.toRem(14);
+    border-radius: mixins.toRem(14);
+    background-color: var(--white-color);
+    border: mixins.toRem(1) solid transparent;
+
+    .loaded & {
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    &:has(input:checked) {
+      border-color: var(--accent-color);
+      background-color: rgba(38, 157, 59, 0.06);
+    }
+
+    &:has(input:disabled) {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: mixins.toRem(12);
+  }
+
+  &__actionbtn,
+  &__ghostbtn,
+  &__darkbtn,
+  &__linkbtn {
+    min-height: mixins.toRem(50);
+    padding: mixins.toRem(14) mixins.toRem(20);
+    border-radius: mixins.toRem(15);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  &__ghostbtn {
+    border: mixins.toRem(1) solid var(--stroke-color);
+    background-color: var(--white-color);
+
+    .loaded & {
+      transition: all 0.3s ease 0s;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+      }
+    }
+  }
+
+  &__darkbtn {
+    color: var(--white-color);
+    background-color: #262f40;
+
+    .loaded & {
+      transition: background-color 0.3s ease 0s;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: #1e2532;
+      }
+    }
+  }
+
+  &__linkbtn {
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent-color);
+    background-color: rgba(38, 157, 59, 0.08);
+
+    .loaded & {
+      transition: all 0.3s ease 0s;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: rgba(38, 157, 59, 0.14);
+      }
+    }
+  }
+
+  &__buttons > :disabled {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  &__colors {
+    display: grid;
+    gap: mixins.toRem(14);
+
+    @media (width >= #{mixins.toEm(variables.$mobile)}) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__faq {
+    display: grid;
+    gap: mixins.toRem(14);
+  }
+
+  &__color {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: mixins.toRem(12);
+    min-height: mixins.toRem(62);
+    padding: mixins.toRem(12) mixins.toRem(14);
+    border-radius: mixins.toRem(16);
+    border: mixins.toRem(1) solid var(--stroke-color);
+    background-color: var(--white-color);
+    cursor: pointer;
+
+    .loaded & {
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        border-color: #cfd6de;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      }
+    }
+
+    &.is-disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    &:has(.uikit-demo__colorinput:checked) {
+      border-color: #262f40;
+      box-shadow: 0 8px 24px rgba(38, 47, 64, 0.12);
+      transform: translateY(-0.0625rem);
+    }
+  }
+
+  &__colorinput {
+    position: absolute;
+    opacity: 0;
+    inline-size: 0;
+    block-size: 0;
+    pointer-events: none;
+  }
+
+  &__swatch {
+    width: mixins.toRem(24);
+    height: mixins.toRem(24);
+    flex: 0 0 mixins.toRem(24);
+    border-radius: 50%;
+    border: mixins.toRem(1) solid rgba(0, 0, 0, 0.14);
+    background: var(--swatch);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+
+    .uikit-demo__color:has(.uikit-demo__colorinput:checked) & {
+      box-shadow:
+        0 0 0 0.1875rem var(--white-color),
+        0 0 0 0.3125rem #262f40,
+        inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    }
+  }
+
+  &__colormeta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: mixins.toRem(12);
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__colorname {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__colorcount {
+    color: var(--grey-color);
+    font-size: mixins.toRem(14);
+    flex-shrink: 0;
+  }
+}

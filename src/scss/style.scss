@@ -122,6 +122,7 @@ body {
 // Подключение стилей отдельных блоков
 @include meta.load-css("header");
 @include meta.load-css("footer");
+@include meta.load-css("faq-listing");
 
 // Подключение стилей отдельных страниц
 @include meta.load-css("home");
@@ -129,3 +130,4 @@ body {
 @include meta.load-css("product");
 @include meta.load-css("cart");
 @include meta.load-css("comparsion");
+@include meta.load-css("ui-kit");

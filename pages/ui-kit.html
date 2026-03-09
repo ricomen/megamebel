@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<load
+		src="src/html/_head.html"
+		title="UI Kit"
+	/>
+	<body>
+		<div class="wrapper">
+      <load src="src/html/_header.html"/>
+			<main class="page">
+        <div class="breadcrumbs">
+          <div class="breadcrumbs__container">
+            <ul class="breadcrumbs__list">
+              <li class="breadcrumbs__item"><a href="#">Главная</a></li>
+              <li class="breadcrumbs__item"><span>UI Kit</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pagehead">
+          <div class="pagehead__container">
+            <h1 class="pagehead__title">Примеры контролов</h1>
+            <p class="pagehead__subtitle">Чекбоксы, кнопки и выбор цвета на отдельной странице</p>
+          </div>
+        </div>
+
+        <section class="uikit-demo">
+          <div class="uikit-demo__container">
+            <div class="uikit-demo__intro">
+              <p class="uikit-demo__eyebrow">Demo page</p>
+              <h2 class="uikit-demo__title">Набор UI-элементов для каталога и форм</h2>
+              <p class="uikit-demo__text">
+                Страница собрана как отдельный полигон для быстрых проверок состояний, отступов и визуала.
+              </p>
+            </div>
+
+            <div class="uikit-demo__grid">
+              <article class="uikit-demo__card">
+                <div class="uikit-demo__cardhead">
+                  <h3>Обычные чекбоксы</h3>
+                  <p>Базовые варианты на существующем <code>form__boxwrap</code>.</p>
+                </div>
+                <div class="uikit-demo__stack">
+                  <label class="uikit-demo__line form__boxwrap">
+                    <input type="checkbox" name="features[]" value="delivery" checked>
+                    <i></i>
+                    <span>Быстрая доставка</span>
+                  </label>
+                  <label class="uikit-demo__line form__boxwrap">
+                    <input type="checkbox" name="features[]" value="assembly">
+                    <i></i>
+                    <span>Сборка в день доставки</span>
+                  </label>
+                  <label class="uikit-demo__line form__boxwrap">
+                    <input type="checkbox" name="features[]" value="discount">
+                    <i></i>
+                    <span>Показывать товары со скидкой</span>
+                  </label>
+                  <label class="uikit-demo__line form__boxwrap">
+                    <input type="checkbox" name="features[]" value="disabled" disabled>
+                    <i></i>
+                    <span>Недоступный вариант</span>
+                  </label>
+                </div>
+              </article>
+
+              <article class="uikit-demo__card">
+                <div class="uikit-demo__cardhead">
+                  <h3>Кнопки</h3>
+                  <p>Примеры основных, контурных и компактных действий.</p>
+                </div>
+                <div class="uikit-demo__buttons">
+                  <button type="button" class="form__submit uikit-demo__actionbtn">Основная кнопка</button>
+                  <button type="button" class="form__outlinebtn uikit-demo__actionbtn">Контурная кнопка</button>
+                  <button type="button" class="uikit-demo__ghostbtn">Нейтральная кнопка</button>
+                  <button type="button" class="uikit-demo__darkbtn">Темная кнопка</button>
+                  <button type="button" class="form__submit uikit-demo__actionbtn" disabled>Disabled</button>
+                  <button type="button" class="uikit-demo__linkbtn">Кнопка-ссылка</button>
+                </div>
+              </article>
+
+              <article class="uikit-demo__card uikit-demo__card_wide">
+                <div class="uikit-demo__cardhead">
+                  <h3>Выбор цвета</h3>
+                  <p>Премиальный вариант чекбоксов со swatch, подписью и количеством товаров.</p>
+                </div>
+                <div class="uikit-demo__colors">
+                  <label class="uikit-demo__color">
+                    <input class="uikit-demo__colorinput" type="checkbox" name="color[]" value="white" checked>
+                    <span class="uikit-demo__swatch" style="--swatch:#f5f5f0;"></span>
+                    <span class="uikit-demo__colormeta">
+                      <span class="uikit-demo__colorname">Белый</span>
+                      <span class="uikit-demo__colorcount">128</span>
+                    </span>
+                  </label>
+                  <label class="uikit-demo__color">
+                    <input class="uikit-demo__colorinput" type="checkbox" name="color[]" value="beige">
+                    <span class="uikit-demo__swatch" style="--swatch:#d7c2a6;"></span>
+                    <span class="uikit-demo__colormeta">
+                      <span class="uikit-demo__colorname">Бежевый</span>
+                      <span class="uikit-demo__colorcount">84</span>
+                    </span>
+                  </label>
+                  <label class="uikit-demo__color">
+                    <input class="uikit-demo__colorinput" type="checkbox" name="color[]" value="cashmere" checked>
+                    <span class="uikit-demo__swatch" style="--swatch:#c9bbac;"></span>
+                    <span class="uikit-demo__colormeta">
+                      <span class="uikit-demo__colorname">Кашемир</span>
+                      <span class="uikit-demo__colorcount">46</span>
+                    </span>
+                  </label>
+                  <label class="uikit-demo__color">
+                    <input class="uikit-demo__colorinput" type="checkbox" name="color[]" value="gray">
+                    <span class="uikit-demo__swatch" style="--swatch:#9aa1a8;"></span>
+                    <span class="uikit-demo__colormeta">
+                      <span class="uikit-demo__colorname">Серый</span>
+                      <span class="uikit-demo__colorcount">73</span>
+                    </span>
+                  </label>
+                  <label class="uikit-demo__color">
+                    <input class="uikit-demo__colorinput" type="checkbox" name="color[]" value="graphite">
+                    <span class="uikit-demo__swatch" style="--swatch:#555b66;"></span>
+                    <span class="uikit-demo__colormeta">
+                      <span class="uikit-demo__colorname">Графит</span>
+                      <span class="uikit-demo__colorcount">31</span>
+                    </span>
+                  </label>
+                  <label class="uikit-demo__color">
+                    <input class="uikit-demo__colorinput" type="checkbox" name="color[]" value="black">
+                    <span class="uikit-demo__swatch" style="--swatch:#1f2328;"></span>
+                    <span class="uikit-demo__colormeta">
+                      <span class="uikit-demo__colorname">Черный</span>
+                      <span class="uikit-demo__colorcount">19</span>
+                    </span>
+                  </label>
+                  <label class="uikit-demo__color">
+                    <input class="uikit-demo__colorinput" type="checkbox" name="color[]" value="oak-sonoma">
+                    <span class="uikit-demo__swatch" style="--swatch:#b79263;"></span>
+                    <span class="uikit-demo__colormeta">
+                      <span class="uikit-demo__colorname">Дуб Сонома</span>
+                      <span class="uikit-demo__colorcount">57</span>
+                    </span>
+                  </label>
+                  <label class="uikit-demo__color is-disabled">
+                    <input class="uikit-demo__colorinput" type="checkbox" name="color[]" value="wenge" disabled>
+                    <span class="uikit-demo__swatch" style="--swatch:#4a3427;"></span>
+                    <span class="uikit-demo__colormeta">
+                      <span class="uikit-demo__colorname">Венге</span>
+                      <span class="uikit-demo__colorcount">0</span>
+                    </span>
+                  </label>
+                </div>
+              </article>
+
+              <article class="uikit-demo__card uikit-demo__card_wide">
+                <div class="uikit-demo__cardhead">
+                  <h3>Аккордион FAQ</h3>
+                  <p>Открывается по клику на <code>+</code>, работает в режиме одного активного пункта и закрывается повторным кликом.</p>
+                </div>
+                <div class="uikit-demo__faq">
+                  <div class="faq-listing__spollers" data-spollers data-one-spoller data-spollers-speed="300">
+                    <details class="faq-listing__item" data-open>
+                      <summary class="faq-listing__question">
+                        <span class="faq-listing__title">Кто ваши поставщики и производители?</span>
+                        <i class="faq-listing__icon" aria-hidden="true"></i>
+                      </summary>
+                      <div class="faq-listing__answer">
+                        Выпускаем мебель на собственных фабриках, а также имеем огромный ассортимент мебели отечественных производителей. Также в нашем каталоге вы можете найти зарубежных производителей.
+                      </div>
+                    </details>
+                    <details class="faq-listing__item">
+                      <summary class="faq-listing__question">
+                        <span class="faq-listing__title">Как работает ваша доставка?</span>
+                        <i class="faq-listing__icon" aria-hidden="true"></i>
+                      </summary>
+                      <div class="faq-listing__answer">
+                        Доставляем заказы по Москве и регионам. После оформления заказа менеджер связывается с вами, уточняет удобную дату и время, а перед доставкой мы дополнительно подтверждаем приезд.
+                      </div>
+                    </details>
+                    <details class="faq-listing__item">
+                      <summary class="faq-listing__question">
+                        <span class="faq-listing__title">Какие материалы используются при сборке мебели?</span>
+                        <i class="faq-listing__icon" aria-hidden="true"></i>
+                      </summary>
+                      <div class="faq-listing__answer">
+                        В зависимости от модели используем ЛДСП, МДФ, массив дерева, металл и надежную мебельную фурнитуру. В карточке товара всегда можно уточнить точный состав материалов.
+                      </div>
+                    </details>
+                    <details class="faq-listing__item">
+                      <summary class="faq-listing__question">
+                        <span class="faq-listing__title">Есть ли у вас кредит или рассрочка при покупке мебели?</span>
+                        <i class="faq-listing__icon" aria-hidden="true"></i>
+                      </summary>
+                      <div class="faq-listing__answer">
+                        Да, для ряда товаров доступны кредит и рассрочка. Условия зависят от выбранной модели и банка-партнера, подробности можно уточнить у менеджера при оформлении заказа.
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+			</main>
+      <load src="src/html/_footer.html"/>
+		</div>
+    <load src="src/html/_popups.html"/>
+    <load src="src/html/_js.html"/>
+	</body>
+</html>

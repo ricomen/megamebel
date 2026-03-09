@@ -1,0 +1,131 @@
+@use "sass:math";
+@use "/src/scss/base/mixins.scss";
+@use "/src/scss/variables.scss";
+
+.faq-listing {
+  @include mixins.adaptiveValue("padding-top", 60, 40, 1280, 480);
+  @include mixins.adaptiveValue("padding-bottom", 60, 40, 1280, 480);
+  
+  &__title {
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: mixins.toRem(40);
+    @include mixins.adaptiveValue("font-size", 35, 22, variables.$maxWidth, variables.$minWidth);
+  }
+
+  &__item {
+    --faq-action-size: #{mixins.toRem(55)};
+    --faq-action-gap: #{mixins.toRem(37)};
+    position: relative;
+    background-color: var(--plate-bg-color);
+    margin-right: calc(var(--faq-action-size)*2);
+    border-radius: mixins.toRem(20);
+    @include mixins.adaptiveValue("padding", 30, 20, variables.$maxWidth, variables.$minWidth);
+
+    &[open] {
+      color: var(--white-color);
+      background-color: var(--accent-color);
+    }
+
+    &+& {
+      margin-top: mixins.toRem(18);
+    }
+
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
+      margin-right: 0;
+    }
+  }
+
+  &__question {
+    margin-right: calc(var(--faq-action-size) + var(--faq-action-gap));
+    cursor: pointer;
+    border-radius: mixins.toRem(20);
+    font-weight: 600;
+    line-height: 1.2;
+    @include mixins.adaptiveValue("font-size", 24, 20, 1280, 480);
+
+    .loaded & {
+      transition: color 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
+    }
+  }
+
+  &__question+&__answer {
+    @include mixins.adaptiveValue("margin-top", 24, 16, 1280, 480);
+  }
+
+  &__answer {
+    line-height: 1.5;
+    @include mixins.adaptiveValue("font-size", 16, 14, 1280, 480);
+  }
+
+  &__item[open] &__icon {
+    background-color: var(--accent-color);
+    border-radius: mixins.toRem(15);
+
+    &::before,
+    &::after {
+      background-color: var(--white-color);
+    }
+
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
+      background-color: var(--white-color);
+
+      &::before,
+      &::after {
+        background-color: var(--accent-color);
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: calc((var(--faq-action-size) + 37px) * -1);
+    width: var(--faq-action-size);
+    height: var(--faq-action-size);
+    border-radius: 50%;
+    background-color: var(--plate-bg-color);
+    transform: translateY(-50%);
+    @include mixins.adaptiveValue("width", 55, 48, 1280, 480);
+    @include mixins.adaptiveValue("height", 55, 48, 1280, 480);
+    
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
+      background-color: var(--white-color);
+    }
+    
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: mixins.toRem(20);
+      height: mixins.toRem(3);
+      border-radius: mixins.toRem(999);
+      background-color: var(--accent-color);
+      transform: translate(-50%, -50%);
+
+      .loaded & {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .faq-listing__item[open] &::after {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .faq-listing__item[open] &::before {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
+      top: mixins.toRem(20) ;
+      right: mixins.toRem(15);
+      transform: translateY(0);
+    }
+  }
+}
