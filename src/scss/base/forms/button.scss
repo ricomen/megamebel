@@ -1,13 +1,55 @@
 //<BUTTONS (a.btn+tab)>
 // Сниппет (HTML): btn
+@use "sass:math";
+@use "/src/scss/base/mixins.scss";
+@use "/src/scss/variables.scss";
 
 .button {
+	--color: var(--white-color);
+	--bg-color: var(--accent-color);
+	--hover-color: var(--accent-hover-color);
+
 	display: inline-flex;
-	padding: 0px 0px;
+	align-items: center;
+	justify-content: center;
+	height: mixins.toRem(50);
+	font-weight: 600;
+	font-size: mixins.toRem(14);
+	border-radius: mixins.toRem(15);
+	color: var(--color);
+	background-color: var(--bg-color);
+	cursor: pointer;
+
 	@media (any-hover: hover) {
 		&:hover {
+			--bg-color: var(--hover-color);
 		}
 	}
+
+	&--secondary {
+		--bg-color: var(--green-accent-color);
+		--hover-color: var(--green-accent-hover-color);
+
+		&:hover {
+			--bg-color: var(--hover-color);
+		}
+	}
+
+	&--outline {
+		--bg-color: transparent;
+		--color: var(--grey-color);
+		--hover-color: var(--grey-dark-color);
+		border-width: mixins.toRem(1);
+		border-style: solid;
+		border-color: var(--color);
+
+		&:hover {
+			--color: var(--hover-color);
+			--border-color: var(--hover-color);
+			--bg-color: transparent;
+		}
+	}
+
 	&--fw {
 		width: 100%;
 	}

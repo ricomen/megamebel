@@ -46,25 +46,26 @@
 //==========================================================================================
 
 .productlisting {
+  --main-grid-columns: 3;
+
+  @media (width < #{mixins.toEm(650)}){
+    --main-grid-columns: 2;
+  }
+  
+  @media (width < #{mixins.toEm(360)}){
+    --main-grid-columns: 1;
+  }
 
   &__container {
     display: grid;
     align-items: start;
     gap: mixins.toRem(20);
 
-    --main-grid-columns: 3;
-    
+  
     @media (width >= #{mixins.toEm(variables.$tablet)}){
       grid-template-columns: 1fr 3.16fr;
     }
 
-    @media (width < #{mixins.toEm(650)}){
-      --main-grid-columns: 2;
-    }
-    
-    @media (width < #{mixins.toEm(360)}){
-      --main-grid-columns: 1;
-    }
   }
 
   &__filters {
@@ -150,8 +151,6 @@
   padding: mixins.toRem(25) mixins.toRem(20);
   background-color: var(--plate-bg-color);
   border-radius: mixins.toRem(15);
-  // position: sticky;
-  // top: mixins.toRem(15);
 
   &__item {
     padding: mixins.toRem(20) 0;
@@ -193,52 +192,42 @@
   }
 
   &__footer {
+    --gap: 10px;
     padding-top: mixins.toRem(20);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: mixins.toRem(10);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
   }
 
   &__reset {
-    height: mixins.toRem(50);
+    width: calc(50% - (var(--gap) / 2));
     border-radius: mixins.toRem(15);
-    border: mixins.toRem(1) solid var(--grey-color);
-    color: var(--grey-color);
     font-size: mixins.toRem(14);
     font-weight: 600;
 
     .loaded & {
       transition: all 0.3s ease 0s;
-    }
-
-    @media (any-hover: hover){
-      &:hover{
-        color: var(--accent-hover-color);
-        border-color: var(--accent-hover-color);
-      }
     }
   }
 
   &__submit {
-    height: mixins.toRem(50);
+    width: calc(50% - (var(--gap) / 2));
     font-weight: 600;
     font-size: mixins.toRem(14);
     border-radius: mixins.toRem(15);
-    color: var(--white-color);
-    background-color: var(--accent-color);
 
     .loaded & {
       transition: all 0.3s ease 0s;
     }
-
-    @media (any-hover: hover){
-      &:hover{
-        background-color: var(--accent-hover-color);
-      }
-    }
   }
 }
 .filters-productlisting {
+  @media (width >= #{mixins.toEm(variables.$tablet)}){
+    position: sticky;
+    top: mixins.toRem(20);
+    align-self: flex-start;
+  }
+
   @media (width < #{mixins.toEm(variables.$tablet)}){
     position: fixed;
     top: 0;
@@ -271,6 +260,22 @@
     font-weight: 500;
     line-height: 1.2;
     @include mixins.adaptiveValue("font-size", 35, 24, 1280, 480);
+  }
+
+  &__body {
+    @media (width >= #{mixins.toEm(variables.$tablet)}){
+      max-height: calc(100dvh - mixins.toRem(40));
+      overflow-y: auto;
+
+      // Скрываем полосу прокрутки кроссбраузерно
+      scrollbar-width: none; // Firefox
+      -ms-overflow-style: none; // IE / Edge
+
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+    }
   }
 
   &__backdrop {

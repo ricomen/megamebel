@@ -150,21 +150,21 @@ document.addEventListener('change', (e) => {
   }
 })
 
-window.addEventListener('load', () => {
-  if (document.querySelector('[data-filters]')) {
-    setFiltersPosition(document.querySelector('[data-filters]'))
-  }
+// window.addEventListener('load', () => {
+//   if (document.querySelector('[data-filters]')) {
+//     setFiltersPosition(document.querySelector('[data-filters]'))
+//   }
 
-  if (document.querySelector('.sidebar-productfull')) {
-    const sidebar = new stickySidebar(document.querySelector('.sidebar-productfull'), {
-      innerWrapperSelector: '.sidebar-productfull__inner',
-      containerSelector: '.productfull__container',
-      bottomSpacing: 30,
-      topSpacing: 30,
-      minWidth: 992
-    })
-  }
-})
+//   if (document.querySelector('.sidebar-productfull')) {
+//     const sidebar = new stickySidebar(document.querySelector('.sidebar-productfull'), {
+//       innerWrapperSelector: '.sidebar-productfull__inner',
+//       containerSelector: '.productfull__container',
+//       bottomSpacing: 30,
+//       topSpacing: 30,
+//       minWidth: 992
+//     })
+//   }
+// })
 
 window.addEventListener('scroll', (e) => {
   document.body.style.setProperty('--scrollY', `${window.scrollY}px`);
@@ -318,14 +318,14 @@ function onPinInputInput(value, input) {
   authPinElement.value = value;
 }
 
-function setFiltersPosition(filtersEl) {
-  const sidebar = new stickySidebar(filtersEl, {
-    innerWrapperSelector: '.filters-productlisting__body',
-    bottomSpacing: 30,
-    topSpacing: 30,
-    minWidth: 992
-  })
-}
+// function setFiltersPosition(filtersEl) {
+//   const sidebar = new stickySidebar(filtersEl, {
+//     innerWrapperSelector: '.filters-productlisting__body',
+//     bottomSpacing: 30,
+//     topSpacing: 30,
+//     minWidth: 992
+//   })
+// }
 
 window.mhzFullCartActions = (cartFull) =>  {
   const oneCheckboxes = cartFull?.querySelectorAll('[data-full-cart-checkone]');
