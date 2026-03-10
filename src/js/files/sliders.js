@@ -164,6 +164,24 @@ function initSliders() {
     
     splide.mount();
   }
+
+  if (document.querySelector('.home-info__links')) {
+    let splide = new Splide('.home-info__links', {
+      type: 'slide',
+      pagination: false,
+      arrows: false,
+      gap: 30,
+      fixedWidth: '80px',
+      breakpoints: {
+        767: {
+          fixedWidth: '60px',
+          gap: 20,
+        }
+      }
+    });
+
+    splide.mount();
+  }
 }
 
 

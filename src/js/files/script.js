@@ -1,11 +1,11 @@
 // Подключение функционала "Чертоги Фрилансера"
-import stickySidebar from "sticky-sidebar";
+// import stickySidebar from "sticky-sidebar";
 import { bodyLock, bodyLockToggle, bodyUnlock, debounce, getDigFromString, getRandomString, isMobile } from "./functions.js";
 // Подключение списка активных модулей
 import { mhzModules } from "./modules.js";
 import PincodeInput from 'pincode-input'
-import { formValidate } from "./forms/forms.js";
-import Inputmask from "inputmask";
+// import { formValidate } from "./forms/forms.js";
+// import Inputmask from "inputmask";
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
 // import 'pincode-input/dist/pincode-input.min.css'
@@ -47,10 +47,18 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.addEventListener('click', (e) => {
+
+  if (e.target.closest('[data-popup="#buy1click"]')) {
+    e.preventDefault();
+    e.stopPropagation();
+    byu1Click(e.target);
+  }
+
   if (e.target.closest('[data-header-catalog-btn]')) {
     document.documentElement.classList.toggle('catalog-open');
     bodyLockToggle();
   }
+
   if (e.target.closest('[data-filter-button]')) {
     document.documentElement.classList.toggle('filters-open');
     bodyLockToggle(10);
@@ -72,6 +80,7 @@ document.addEventListener('click', (e) => {
       items.forEach(item => item.classList.remove('_active'));
     }
   }
+
   if (e.target.closest('.catalog-header__back')) {
     const items = document.querySelectorAll('.catalog-header__content');
     const links = document.querySelectorAll('.catalog-header__link');
@@ -100,7 +109,7 @@ document.addEventListener('click', (e) => {
   }
 
   if (e.target.closest('[data-add2basket-btn]')) {
-    onAddToBasketClick(e.target.closest('[data-add2basket-btn]'))
+    onAddToBasketClick(e.target)
   }
 
   if (e.target.closest('[data-full-cart-clear]')) {
@@ -800,8 +809,12 @@ function handleResponsePopup(response) {
 async function favComparsionBtnAction(target, actionType) {
   const productId = target?.closest('[data-product_id]')?.getAttribute('data-product_id');
   if (!productId) return;
+  window.favorites = Object.values(window.favorites || []).map(String);
+  window.comparsion = Object.values(window.comparsion || []).map(String);
 
-  const type = target.classList.contains('_active') ? 'REMOVE' : 'ADD';
+  const store = actionType === 'favorite' ? window.favorites : window.comparsion;
+  const exists = store.includes(String(productId));
+  const type = exists ? 'REMOVE' : 'ADD';
 
   let url;
 
@@ -813,6 +826,7 @@ async function favComparsionBtnAction(target, actionType) {
       url = window.urls?.comparsion || '/ajax/comparsion_megamebel.php';
       break;
   }
+  
   if (!url) return;
   target.classList.add('_pen');
   const body = new FormData();
@@ -921,6 +935,7 @@ function setProductsButtons() {
       }
     })
   }
+  
   const headerComparsionButtons = document.querySelectorAll('[data-header-comparsion] i');
   if (headerComparsionButtons.length) {
     headerComparsionButtons.forEach(headerComparsionButton => {
@@ -1070,6 +1085,42 @@ function disablecontext(e, errorMsg = 'Вы не можете сохранять
         return false;
     }
 }
+
+function byu1Click(button) {
+  console.log("byu1Click");
+    const popup = document.querySelector('#buy1click');
+    if (!popup || !button) return;
+
+    const entity = button.closest('[data-entity="item"]');
+    const entityInput = entity?.querySelector('input[name="data"]');
+    if (!entityInput) return;
+
+    const {CATEGORY_NAME, NAME, PRICE, OFFER_ID} = JSON.parse(entityInput.value);
+    const formattedPrice = new Intl.NumberFormat("ru", {style: "currency", currency: "RUB"}).format(PRICE);
+
+    const popupItemPicture = popup.querySelector('.description__image');
+    if (popupItemPicture) {
+      popupItemPicture.src = button.dataset.img;
+      popupItemPicture.alt = NAME;
+    }
+    const popupItemName = popup.querySelector('.model');
+    const popupItemCategoryName = popup.querySelector('.type');
+    const popupItemPrice = popup.querySelector('.price');
+    if (popupItemName) popupItemName.textContent = NAME;
+    if (popupItemCategoryName) popupItemCategoryName.textContent = CATEGORY_NAME;
+    if (popupItemPrice) popupItemPrice.textContent = formattedPrice;
+
+    const form = popup.querySelector('form');
+    if (form && form.elements) {
+      const el = form.elements;
+      if (el.name) el.name.value = NAME;
+      if (el.category_name) el.category_name.value = CATEGORY_NAME;
+      if (el.price) el.price.value = PRICE;
+      if (el.product_id) el.product_id.value = button.dataset.id;
+      if (el.offer_id) el.offer_id.value = OFFER_ID;
+    }
+}
+
 
 window.Toastify = Toastify;
 window.mhzModules = mhzModules;

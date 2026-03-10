@@ -298,9 +298,12 @@ class Popup {
 			this.previousOpen.element.classList.add('_close');
 
 			setTimeout(() => {
+				// Сначала уводим фокус из попапа, затем aria-hidden (требование a11y)
+				if (this.lastFocusEl && typeof this.lastFocusEl.focus === 'function') {
+					this.lastFocusEl.focus();
+				}
 				this.previousOpen.element.classList.remove('_close');
 				this.previousOpen.element.classList.remove(this.options.classes.popupActive);
-				// aria-hidden
 				this.previousOpen.element.setAttribute('aria-hidden', 'true');
 				if (!this._reopen) {
 					document.documentElement.classList.remove(this.options.classes.bodyActive);

@@ -187,14 +187,15 @@ img {
     width: mixins.toRem(206);
   }
 
-  @media (any-hover: hover) {
-    &:hover {
-      .product-slide__quickview {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
-  }
+  // Временно скрыто, расскоментировать когда будет добавлен функционал быстрого просмотра
+  // @media (any-hover: hover) {
+  //   &:hover {
+  //     .product-slide__quickview {
+  //       opacity: 1;
+  //       pointer-events: all;
+  //     }
+  //   }
+  // }
 
   &__link {
     position: absolute;
