@@ -1013,11 +1013,9 @@
     line-height: 1.2;
     padding: clamp(5px, 2vw, 15px) clamp(5px, 5vw, 28px);
 
-    // @media (width >=#{mixins.toEm(variables.$pc)}) {
-    //   justify-content: center;
-    //   align-items: center;
-    //   padding: mixins.toRem(15) mixins.toRem(22);
-    // }
+    @media (width < 1440px) {
+      padding-inline: 18px;
+    }
 
     @media (width < #{mixins.toEm(variables.$pc)}) {
       height: mixins.toRem(46);
