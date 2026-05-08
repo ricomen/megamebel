@@ -13,9 +13,11 @@
 	align-items: center;
 	justify-content: center;
 	height: mixins.toRem(50);
+	padding-right:mixins.toRem(10);
+	padding-left:mixins.toRem(10);
 	font-weight: 600;
 	font-size: mixins.toRem(14);
-	border-radius: mixins.toRem(15);
+	border-radius: mixins.toRem(15) !important;
 	color: var(--color);
 	background-color: var(--bg-color);
 	cursor: pointer;

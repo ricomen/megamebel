@@ -7,8 +7,7 @@
     @include mixins.adaptiveValue("margin-bottom", 26, 20, 1280, 480);
   }
 
-  &__container {
-  }
+  &__container {}
 
   &__body {
     display: flex;
@@ -38,7 +37,8 @@
     span {
       flex: 1 0 var(--min-height);
       display: flex;
-      justify-content:center;align-items: center;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
@@ -48,11 +48,11 @@
 .productlisting {
   --main-grid-columns: 3;
 
-  @media (width < #{mixins.toEm(650)}){
+  @media (width < #{mixins.toEm(650)}) {
     --main-grid-columns: 2;
   }
-  
-  @media (width < #{mixins.toEm(360)}){
+
+  @media (width < #{mixins.toEm(360)}) {
     --main-grid-columns: 1;
   }
 
@@ -61,18 +61,16 @@
     align-items: start;
     gap: mixins.toRem(20);
 
-  
-    @media (width >= #{mixins.toEm(variables.$tablet)}){
+
+    @media (width >=#{mixins.toEm(variables.$tablet)}) {
       grid-template-columns: 1fr 3.16fr;
     }
 
   }
 
-  &__filters {
-  }
+  &__filters {}
 
-  &__main {
-  }
+  &__main {}
 
   &__body {
     display: grid;
@@ -83,13 +81,16 @@
       width: auto;
     }
 
-    &:not(:last-child) {margin-bottom: mixins.toRem(20);}
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(20);
+    }
   }
 
   &__footer {
     display: grid;
     gap: mixins.toRem(20);
-    @media (width >= #{mixins.toEm(variables.$mobile)}){
+
+    @media (width >=#{mixins.toEm(variables.$mobile)}) {
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -100,13 +101,23 @@
     background-color: var(--plate-bg-color);
     font-weight: 600;
     font-size: mixins.toRem(14);
-    @media (width >= #{mixins.toEm(variables.$mobile)}){
+
+    @media (width >=#{mixins.toEm(variables.$mobile)}) {
       grid-column: 1 / span 2;
+    }
+
+    &[disabled] {
+      color: var(--disabled-color);
+    }
+
+    [data-more-loader] {
+      width: mixins.toRem(40);
+      height: mixins.toRem(40);
     }
   }
 
   &__pagination {
-    @media (width < #{mixins.toEm(variables.$mobile)}){
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
       justify-content: center;
     }
   }
@@ -116,6 +127,7 @@
     align-items: center;
     justify-content: flex-end;
     gap: mixins.toRem(10);
+
     >span {
       font-size: mixins.toRem(14);
       line-height: 1.2;
@@ -142,11 +154,12 @@
       }
     }
 
-    @media (width < #{mixins.toEm(variables.$mobile)}){
+    @media (width < #{mixins.toEm(variables.$mobile)}) {
       display: none;
     }
   }
 }
+
 .filters {
   padding: mixins.toRem(25) mixins.toRem(20);
   background-color: var(--plate-bg-color);
@@ -165,8 +178,8 @@
     font-weight: 600;
     line-height: 1.2;
 
-    &::after{
-      content:'';
+    &::after {
+      content: '';
       background-image: url("data:image/svg+xml,%3Csvg width='9' height='6' viewBox='0 0 9 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.75 0.75L4.25 4.75L7.75 0.75' stroke='%23212529' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
       width: mixins.toRem(7);
       height: mixins.toRem(7);
@@ -181,7 +194,7 @@
     }
 
     &._spoller-active {
-      &::after{
+      &::after {
         rotate: 180deg;
       }
     }
@@ -221,14 +234,15 @@
     }
   }
 }
+
 .filters-productlisting {
-  @media (width >= #{mixins.toEm(variables.$tablet)}){
+  @media (width >=#{mixins.toEm(variables.$tablet)}) {
     position: sticky;
     top: mixins.toRem(20);
     align-self: flex-start;
   }
 
-  @media (width < #{mixins.toEm(variables.$tablet)}){
+  @media (width < #{mixins.toEm(variables.$tablet)}) {
     position: fixed;
     top: 0;
     left: 0;
@@ -263,7 +277,7 @@
   }
 
   &__body {
-    @media (width >= #{mixins.toEm(variables.$tablet)}){
+    @media (width >=#{mixins.toEm(variables.$tablet)}) {
       max-height: calc(100dvh - mixins.toRem(40));
       overflow-y: auto;
 
@@ -289,11 +303,12 @@
     z-index: 3;
     opacity: 0;
     pointer-events: none;
+
     .loaded & {
       transition: all 0.3s ease 0s;
     }
 
-    @media (width >= #{mixins.toEm(variables.$pc)}){
+    @media (width >=#{mixins.toEm(variables.$pc)}) {
       display: none;
     }
 
@@ -303,6 +318,7 @@
     }
   }
 }
+
 .prices-filters {
   padding-bottom: mixins.toRem(20);
 
@@ -311,7 +327,9 @@
     grid-template-columns: repeat(2, 1fr);
     gap: mixins.toRem(10);
 
-    &:not(:last-child) {margin-bottom: mixins.toRem(15);}
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(15);
+    }
 
     input {
       height: mixins.toRem(50);
@@ -323,13 +341,16 @@
     }
   }
 }
+
 .boxes-filters {
 
   &__item {
     font-weight: 500;
     font-size: mixins.toRem(14);
 
-    &:not(:last-child) {margin-bottom: mixins.toRem(5);}
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(5);
+    }
 
     p {
       margin-left: auto;
@@ -337,6 +358,7 @@
     }
   }
 }
+
 .main-productlisting {
 
   &__head {
@@ -344,10 +366,14 @@
     align-items: center;
     gap: mixins.toRem(16);
     justify-content: space-between;
-    &:not(:last-child) {margin-bottom: mixins.toRem(20);}
+
+    &:not(:last-child) {
+      margin-bottom: mixins.toRem(20);
+    }
+
     z-index: 2;
 
-    @media (width >= #{mixins.toEm(variables.$mobileSmall)}){
+    @media (width >=#{mixins.toEm(variables.$mobileSmall)}) {
       display: grid;
       grid-template-columns: repeat(var(--main-grid-columns), 1fr);
       gap: mixins.toRem(20);
@@ -369,14 +395,15 @@
       font-weight: 600;
     }
 
-    @media (width < #{mixins.toEm(variables.$tablet)}){
+    @media (width < #{mixins.toEm(variables.$tablet)}) {
       display: none;
     }
   }
 
   &__filterbutton {
     display: flex;
-    justify-content:center;align-items: center;
+    justify-content: center;
+    align-items: center;
     gap: mixins.toRem(10);
     border-radius: mixins.toRem(10);
     background-color: var(--plate-bg-color);
@@ -384,7 +411,7 @@
     padding: mixins.toRem(12);
     font-size: mixins.toRem(14);
 
-    @media (width >= #{mixins.toEm(variables.$tablet)}){
+    @media (width >=#{mixins.toEm(variables.$tablet)}) {
       display: none;
     }
   }
@@ -400,8 +427,8 @@
         align-items: center;
         gap: mixins.toRem(6);
 
-        &::before{
-          content:'';
+        &::before {
+          content: '';
           display: block;
           width: mixins.toRem(18);
           height: mixins.toRem(18);
@@ -410,7 +437,7 @@
           background-repeat: no-repeat;
         }
 
-        @media (width < #{mixins.toEm(variables.$mobileSmall)}){
+        @media (width < #{mixins.toEm(variables.$mobileSmall)}) {
           width: auto;
           margin-left: auto;
         }
@@ -418,7 +445,8 @@
 
       &__value {
         flex: 1 1 auto;
-        @media (width < #{mixins.toEm(variables.$mobileSmall)}){
+
+        @media (width < #{mixins.toEm(variables.$mobileSmall)}) {
           display: none;
         }
       }

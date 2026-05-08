@@ -98,9 +98,9 @@
       aspect-ratio: 688 / 335;
     }
 
-    @media (width < #{mixins.toEm(600)}) {
-      aspect-ratio: 440 / 290;
-    }
+    // @media (width < #{mixins.toEm(600)}) {
+    //   aspect-ratio: 440 / 290;
+    // }
   }
 
   &__content {
